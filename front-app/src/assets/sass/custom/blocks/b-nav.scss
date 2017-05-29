@@ -1,0 +1,25 @@
+// main: ../../main.scss
+
+.b-nav {
+  border-radius: 0;
+  border: none;
+  background-color: $primary-1;
+  margin-bottom: 0;
+  .navbar-header {
+    @media (max-width: 768px) {
+      &.n-l, &.n-r {
+        position: absolute;
+      }
+      &.n-r {
+        right: 15px;
+      }
+    }
+  }
+  .navbar-brand {
+    color: $black;
+    &:hover {
+      color: $black;
+    }
+  }
+
+}

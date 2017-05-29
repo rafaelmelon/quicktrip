@@ -1,0 +1,37 @@
+<div class="panel panel-default panel-map">
+  <div class="panel-heading">Route selected</div>
+  <div class="panel-body">
+    <p>Tiempo estimado: 50min</p>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item">01 - Museo de Cera</li>
+    <li class="list-group-item">02 - Museo del Prado</li>
+    <li class="list-group-item">03 - Puerta del Sol</li>
+    <li class="list-group-item">04 - Gran vía</li>
+    <li class="list-group-item">05 - Fuente de cibeles</li>
+    <div *ngIf="allArrays">
+       {{ allArrays[0].name }}
+    </div>
+  </ul>
+</div>
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><i class="glyphicon glyphicon-triangle-bottom"></i> Old routes</a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse">
+      <div class="panel-body">
+        <p>Vuelve a seleccionar antiguas rutas</p>
+
+      </div>
+      <ul class="list-group">
+        <a href="#" class="list-group-item active">Madrid</a>
+        <a href="#" class="list-group-item">Barcelona</a>
+        <a href="#" class="list-group-item">Dubín</a>
+        <a href="#" class="list-group-item">Munich</a>
+      </ul>
+    </div>
+  </div>
+</div>
