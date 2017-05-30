@@ -1,17 +1,20 @@
-<div class="panel panel-default panel-map">
+<div class="panel panel-default panel-map" *ngIf="userPlaces">
   <div class="panel-heading">Route selected</div>
   <div class="panel-body">
-    <p>Tiempo estimado: 50min</p>
+     <p>Tiempo seleccionado: <span>{{ userTime }}</span></p>
+     <p>Origen: <span>{{ origin.location.name }}</span></p>
+     <p>Destino: <span>{{ destination.location.name }}</span></p>
   </div>
   <ul class="list-group">
-    <li class="list-group-item">01 - Museo de Cera</li>
-    <li class="list-group-item">02 - Museo del Prado</li>
-    <li class="list-group-item">03 - Puerta del Sol</li>
-    <li class="list-group-item">04 - Gran vía</li>
-    <li class="list-group-item">05 - Fuente de cibeles</li>
-    <div *ngIf="allArrays">
-       {{ allArrays[0].name }}
-    </div>
+    <li *ngFor="let item of userPlaces;let i = index" class="list-group-item">
+      <div class="box-imgroute">
+         <img src="{{item.photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})}}" alt="">
+      </div>
+      <div class="box-inforoute">
+        <h4 class="h4"><span>{{i}}</span> {{item.name}}</h4>
+        <p>{{item.vicinity}}</p>
+      </div>
+    </li>
   </ul>
 </div>
 <div class="panel-group" id="accordion">

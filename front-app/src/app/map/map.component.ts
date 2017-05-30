@@ -20,6 +20,13 @@ export class MapComponent implements OnInit {
 
   public user: any;
   public error: string;
+  public userPlaces: any;
+  public userPlacesRoute: any;
+  public placeInfo = {
+    user: '',
+    place: '',
+    mapBD: ''
+  };
 
   public latitude: number;
   public longitude: number;
@@ -91,14 +98,33 @@ export class MapComponent implements OnInit {
 
   originSelected(originAll){
     this.origin = originAll;
-    console.log(this.origin);
   }
 
   destinationSelected(destinationAll){
     this.destination = destinationAll;
     this.location = destinationAll.location;
-    console.log(this.destination)
   }
+
+  showRoute(route){
+    this.userPlaces = route;
+  }
+
+  dataRoute(data){
+    this.userPlacesRoute = data;
+  }
+
+
+  // setMapRoute(){
+  //   this.placeInfo.user = this.user._id;
+  //   this.placeInfo.place = this.saveTest;
+  //   this.placeInfo.mapBD = "aquí va el mapa";
+  //
+  //   this.session.postMapRoute(this.placeInfo)
+  //   .subscribe(
+  //     (user) => this.successCb(user),
+  //     (err) => this.errorCb(err)
+  //   );
+  // }
 
   errorCb(err) {
     this.error = err;

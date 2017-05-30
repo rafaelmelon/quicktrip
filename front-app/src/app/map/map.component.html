@@ -27,12 +27,11 @@
             <strong>Current position</strong>
           </sebm-google-map-info-window>
         </sebm-google-map-marker>
-        <sebm-google-map-directions *ngIf="location" [origin]="origin" [destination]="destination">
-        </sebm-google-map-directions>
+        <sebm-google-map-directions *ngIf="location" [origin]="origin" [destination]="destination" (eventCompleted)="showRoute($event)" (eventCompletedData)="dataRoute($event)"></sebm-google-map-directions>
       </sebm-google-map>
     </div>
     <div class="col-xs-6 col-sm-3 sidebar-offcanvas sidebar-map p-0" id="sidebar">
-      <app-geo-info></app-geo-info>
+      <app-geo-info *ngIf="location" [origin]="origin" [destination]="destination" [userPlaces]="userPlaces" [userPlacesRoute]="userPlacesRoute"></app-geo-info>
     </div>
   </div>
 </div>

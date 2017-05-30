@@ -20,12 +20,6 @@ export class GeoRouteComponent implements OnInit {
   public user: any;
   public error: string;
 
-  public placeInfo = {
-    user: '',
-    place: '',
-    mapBD: ''
-  };
-
   @Input() originPlaceId:any;
   @Input() destinationPlaceId:any;
 
@@ -33,6 +27,10 @@ export class GeoRouteComponent implements OnInit {
   @Input() estimatedTime : any;
   @Input() estimatedDistance : any;
 
+  @Output() eventCompleted = new EventEmitter<any>();
+  @Output() eventCompletedData = new EventEmitter<any>();
+
+  globalRoutes;
 
   control = 0;
   userTime;
@@ -179,16 +177,19 @@ export class GeoRouteComponent implements OnInit {
             let i = 0;
             let totalTime= 0;
 
-            while(totalTime<userTime){
+            while(totalTime<userTime && i<route.legs.length){
               console.log("1. FINAL ROUTE ///(/(/(/(/(/)))))")
               var theLeg = route.legs[i];
-              console.log(theLeg)
+              console.log("este es LEGS ",route.legs.length)
+              console.log("este es I ",i)
               time = theLeg.duration.value;
               totalTime += time;
               console.log("Start..........: " + theLeg.start_address);
               console.log("Destination....: " + theLeg.end_address);
               console.log("Location.......: " + theLeg.start_location.lat() + "," + theLeg.start_location.lng());
               console.log("Distance.......: " + theLeg.distance.text);
+              console.log("Travel time....: " + me.secondsToTime(theLeg.duration.value));
+              console.log("Service time...: " + me.secondsToTime(userTime));
               console.log("POINT time seconds...: " + theLeg.duration.value);
               console.log("TOTAL time seconds...: " + totalTime);
               console.log("------------------------------");
@@ -203,6 +204,9 @@ export class GeoRouteComponent implements OnInit {
               console.log("PASO 4 - CONTROL 2 :::::::::::::::::::::::::::::::::::::::::::")
               console.log(response)
               console.log(TestTest)
+
+              me.dataRoute(response);
+              me.showRoute(TestTest);
 
               me.directionsDisplay.setDirections(response);
 
@@ -257,15 +261,28 @@ export class GeoRouteComponent implements OnInit {
       });
     });
   }
-  // setMapRoute(){
-  //   this.placeInfo.user = this.user._id;
-  //   this.placeInfo.place = this.saveTest;
-  //   this.placeInfo.mapBD = "aquí va el mapa";
-  //
-  //   this.session.postMapRoute(this.placeInfo)
-  //   .subscribe(
-  //     (user) => this.successCb(user),
-  //     (err) => this.errorCb(err)
-  //   );
-  // }
+  public showRoute(route){
+    this.eventCompleted.emit(route)
+  }
+
+  public dataRoute(data){
+    this.eventCompletedData.emit(data)
+  }
+
+  public secondsToTime(secs) {
+     secs = Math.round(secs);
+     var hours = Math.floor(secs / (60 * 60));
+
+     var divisor_for_minutes = secs % (60 * 60);
+     var minutes = Math.floor(divisor_for_minutes / 60);
+
+     var divisor_for_seconds = divisor_for_minutes % 60;
+     var seconds = Math.ceil(divisor_for_seconds);
+
+     var t = hours + ":" + minutes + ":" + seconds;
+
+     return t;
+  }
+
+
 }

@@ -4,9 +4,41 @@
   background-color: $primary-1;
   height: 100%;
   .h-100 {
-    //height: 100%;
+    height: 100%;
   }
   .panel-map {
+    .panel-body {
+      background-color: $white;
+    }
+    .list-group {
+      .list-group-item {
+        float: left;
+        width: 100%;
+        .box-imgroute {
+          float: left;
+          width: 15%;
+          img {
+            width: 100%;
+          }
+        }
+        .box-inforoute {
+          float: left;
+          padding: 0 0 0 10px;
+          width: 85%;
+          .h4 {
+            font-size: 15px;
+            margin: 0 0 10px;
+            span {
+              padding-right: 4px;
+              color: #00A63F;
+            }
+          }
+          p {
+            font-size: 12px;
+          }
+        }
+      }
+    }
 
   }
   .sebm-google-map-container-inner {
