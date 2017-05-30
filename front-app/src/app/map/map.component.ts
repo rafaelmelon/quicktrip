@@ -41,6 +41,7 @@ export class MapComponent implements OnInit {
   location;
   destination;
   timeDestination;
+  dataComplete = false;
 
   constructor(
     private mapsAPILoader: MapsAPILoader,
@@ -105,7 +106,7 @@ export class MapComponent implements OnInit {
   destinationSelected(destinationAll){
     this.destination = destinationAll;
     this.location = destinationAll.location;
-    console.log(this.destination);
+    this.dataComplete = true;
   }
 
   showRoute(route){
@@ -119,7 +120,6 @@ export class MapComponent implements OnInit {
   setMapRoute(){
     this.placeInfo.user = this.user._id;
     this.placeInfo.place = this.location.vicinity;
-
     for(var i = 0; i < this.userPlaces.length;i++){
       this.placeInfo.mapBD.push(
         {
@@ -129,8 +129,6 @@ export class MapComponent implements OnInit {
         }
       );
     }
-
-    console.log(this.placeInfo)
     this.session.postMapRoute(this.placeInfo)
     .subscribe(
       (user) => this.successCb(user),

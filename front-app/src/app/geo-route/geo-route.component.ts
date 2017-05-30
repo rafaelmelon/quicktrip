@@ -90,7 +90,7 @@ export class GeoRouteComponent implements OnInit {
 
       function attachInfoWindow(marker, legIndex, leg) {
         var open;
-        if(leg.opening_hours.open_now || leg.opening_hours.open_now !== undefined){
+        if(leg.opening_hours.open_now || leg.opening_hours.open_now === undefined){
           open = "Open now"
         }else{
           open = "Close now"

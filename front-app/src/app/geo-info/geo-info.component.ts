@@ -1,4 +1,5 @@
 import { Component, Input, Output, OnInit } from '@angular/core';
+import { SessionService } from './../session.service';
 
 @Component({
   selector: 'app-geo-info',
@@ -13,13 +14,30 @@ export class GeoInfoComponent implements OnInit {
   @Input() origin:any ;
   @Input() destination:any;
 
+  user: any;
+  error: string;
+  getMapData: any;
+
+
   userTime;
 
-  constructor() { }
+  constructor(private session: SessionService) { }
 
   ngOnInit() {
     this.userTime = (this.destination.minutes - this.origin.minutes) * 60;
     this.userTime = this.secondsToTime(this.userTime);
+
+    this.getMapData;
+    console.log("HOLA MAPAS Y RUTAS");
+    console.log(this.getMapData);
+  }
+
+  public getRoutes() {
+    this.session.getMapRoute()
+      .subscribe(
+        (data) => this.getMapData = data,
+        (err) => this.error = err
+      );
   }
 
   public secondsToTime(secs) {
@@ -35,6 +53,16 @@ export class GeoInfoComponent implements OnInit {
      var t = hours + ":" + minutes + ":" + seconds;
 
      return t;
+  }
+
+  errorCb(err) {
+    this.error = err;
+    this.user = null;
+  }
+
+  successCb(user) {
+    this.user = user;
+    this.error = null;
   }
 
 }

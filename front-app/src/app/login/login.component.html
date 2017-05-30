@@ -1,0 +1,37 @@
+<div class="g-login">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-xs-offset-0 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+        <div class="b-form">
+          <div class="panel panel-info">
+            <div class="panel-body">
+              <div class="form-group text-center">
+                <div class="logo"></div>
+                <h2 class="h3 text-center">Login or Signup</h2>
+              </div>
+              <div class="form-group text-center">
+                <div class="avatar">
+                  <i class="glyphicon glyphicon-user"></i>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control input-style" placeholder="User name" [(ngModel)]="formInfo.username" name="username">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control input-style" placeholder="Password" [(ngModel)]="formInfo.password" name="password">
+              </div>
+              <p class="error"> {{ error }} </p>
+              <div class="form-group text-center">
+                <button class="btn btn-success btn-lg btn-custom-1 btn-custom-color-1" (click)="login()">Login</button>
+              </div>
+              <div class="form-group text-center text-signup">
+                <p >Not registered yet?</p>
+                <a href="#" (click)="signup()">Sign up</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

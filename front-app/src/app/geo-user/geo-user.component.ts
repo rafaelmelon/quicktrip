@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionService } from './../session.service';
 
 @Component({
   selector: 'app-geo-user',
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GeoUserComponent implements OnInit {
 
-  constructor() { }
+  user: any;
+  error: string;
+  getMapData: any;
+
+
+  constructor(private session: SessionService) { }
 
   ngOnInit() {
+    this.getMapData;
+    console.log(this.getMapData);
+  }
+
+
+
+
+  errorCb(err) {
+    this.error = err;
+    this.user = null;
+  }
+
+  successCb(user) {
+    this.user = user;
+    this.error = null;
   }
 
 }

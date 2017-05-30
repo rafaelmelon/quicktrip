@@ -49,17 +49,13 @@ export class SessionService {
       .catch(this.handleError);
   }
 
+  getMapRoute() {
+    return this.http.get(`${BASEURL}/place`, this.options)
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
+
   postMapRoute(map) {
-
-    // const dataObj = {
-    //   map:map,
-    //   userID:this.user._id
-    // }
-    // console.log(dataObj)
-
-    console.log("envío a la DB")
-    console.log(map)
-
     return this.http.post(`${BASEURL}/place`, map, this.options)
       .map(res => res.json())
       .catch(this.handleError);
