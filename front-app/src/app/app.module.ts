@@ -15,6 +15,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { GeoInputComponent } from './geo-input/geo-input.component';
 import { GeoRouteComponent } from './geo-route/geo-route.component';
 import { GeoInfoComponent } from './geo-info/geo-info.component';
+import { GeoUserComponent } from './geo-user/geo-user.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { GeoInfoComponent } from './geo-info/geo-info.component';
     NavbarComponent,
     GeoInputComponent,
     GeoRouteComponent,
-    GeoInfoComponent
+    GeoInfoComponent,
+    GeoUserComponent
   ],
   imports: [
     BrowserModule,

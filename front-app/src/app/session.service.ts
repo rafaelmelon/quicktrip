@@ -57,6 +57,9 @@ export class SessionService {
     // }
     // console.log(dataObj)
 
+    console.log("envío a la DB")
+    console.log(map)
+
     return this.http.post(`${BASEURL}/place`, map, this.options)
       .map(res => res.json())
       .catch(this.handleError);

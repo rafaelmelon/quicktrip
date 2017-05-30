@@ -22,10 +22,11 @@ export class MapComponent implements OnInit {
   public error: string;
   public userPlaces: any;
   public userPlacesRoute: any;
+
   public placeInfo = {
     user: '',
     place: '',
-    mapBD: ''
+    mapBD: []
   };
 
   public latitude: number;
@@ -98,11 +99,13 @@ export class MapComponent implements OnInit {
 
   originSelected(originAll){
     this.origin = originAll;
+    console.log(this.origin);
   }
 
   destinationSelected(destinationAll){
     this.destination = destinationAll;
     this.location = destinationAll.location;
+    console.log(this.destination);
   }
 
   showRoute(route){
@@ -113,18 +116,27 @@ export class MapComponent implements OnInit {
     this.userPlacesRoute = data;
   }
 
+  setMapRoute(){
+    this.placeInfo.user = this.user._id;
+    this.placeInfo.place = this.location.vicinity;
 
-  // setMapRoute(){
-  //   this.placeInfo.user = this.user._id;
-  //   this.placeInfo.place = this.saveTest;
-  //   this.placeInfo.mapBD = "aquí va el mapa";
-  //
-  //   this.session.postMapRoute(this.placeInfo)
-  //   .subscribe(
-  //     (user) => this.successCb(user),
-  //     (err) => this.errorCb(err)
-  //   );
-  // }
+    for(var i = 0; i < this.userPlaces.length;i++){
+      this.placeInfo.mapBD.push(
+        {
+          icon: this.userPlaces[i].icon,
+          name: this.userPlaces[i].name,
+          vicinity: this.userPlaces[i].vicinity,
+        }
+      );
+    }
+
+    console.log(this.placeInfo)
+    this.session.postMapRoute(this.placeInfo)
+    .subscribe(
+      (user) => this.successCb(user),
+      (err) => this.errorCb(err)
+    );
+  }
 
   errorCb(err) {
     this.error = err;
