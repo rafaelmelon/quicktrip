@@ -16,7 +16,7 @@ export class GeoInfoComponent implements OnInit {
 
   user: any;
   error: string;
-  getMapData: any;
+  routesArray: any;
 
 
   userTime;
@@ -27,15 +27,15 @@ export class GeoInfoComponent implements OnInit {
     this.userTime = (this.destination.minutes - this.origin.minutes) * 60;
     this.userTime = this.secondsToTime(this.userTime);
 
-    this.getMapData;
+    this.routesArray;
     console.log("HOLA MAPAS Y RUTAS");
-    console.log(this.getMapData);
+    console.log(this.routesArray);
   }
 
   public getRoutes() {
-    this.session.getMapRoute()
+    this.session.getMapRoute(this.user._id)
       .subscribe(
-        (data) => this.getMapData = data,
+        (data) => this.routesArray = data,
         (err) => this.error = err
       );
   }

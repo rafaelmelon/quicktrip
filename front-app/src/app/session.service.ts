@@ -10,6 +10,13 @@ const BASEURL = "http://localhost:3000";
 export class SessionService {
   options = {widthCredentials:true};
   user :any;
+
+  contacts: Array<Object> = [
+    { id: 100, name: 'Andy' },
+    { id: 201, name: 'George' },
+    { id: 302, name: 'Max' }
+  ];
+
   constructor(private http: Http) { }
 
   handleError(e) {
@@ -49,10 +56,14 @@ export class SessionService {
       .catch(this.handleError);
   }
 
-  getMapRoute() {
-    return this.http.get(`${BASEURL}/place`, this.options)
+  getMapRoute(id) {
+    return this.http.get(`${BASEURL}/place/${id}`, this.options)
       .map(res => res.json())
       .catch(this.handleError);
+  }
+
+  getList(): Array<Object> {
+    return this.contacts;
   }
 
   postMapRoute(map) {
@@ -61,3 +72,24 @@ export class SessionService {
       .catch(this.handleError);
   }
 }
+
+
+
+
+
+// @Injectable()
+// export class PhoneService {
+//
+//   options = {};
+//   constructor(private http: Http) {
+//   }
+//
+//   getPhoneList(){
+//     return this.http.get(`${BASEURL}/api/phones/`,this.options).map(res => res.json());
+//   }
+//
+//   getPhoneDetails(id){
+//     return this.http.get(`${BASEURL}/api/phones/${id}`,this.options).map(res => res.json());
+//   }
+//
+// }

@@ -1,25 +1,60 @@
 /* jshint esversion:6 */
 
-const express = require('express');
-const passport = require('passport');
-
-// Require Custom Middleware
-//const mapChecker = require('../middleware/mapChecker');
+const express    = require('express');
+const passport   = require('passport');
+const bcrypt     = require('bcrypt');
 
 const User = require('../models/user-model');
 const Place = require('../models/user-routes');
 
 const mapRoutes = express.Router();
 
+mapRoutes.get('/place/:id', (req, res, next) => {
 
-mapRoutes.get('/place', (req, res, next) => {
-  if (req.isAuthenticated()) {
-    res.json({ message: 'This is a private message' });
-    return;
-  }
+  Place.find({user : req.params._id}).populate('user').exec((error, mapBD)=>{
 
-  res.status(403).json({ message: 'Unauthorized' });
+     if (error) { next(error); }
+
+     res.json(mapBD);
+  });
+
+  // if (req.isAuthenticated()) {
+  //   res.json({ message: 'This is a private message' });
+  //   return;
+  // }
+
+
+
+  // let populatePlace;
+  // console.log(req.params._id);
+  // Place.find({user : req.params._id},(err,place)=>{
+  //   populatePlace = new Promise((resolve)=>place.populate("user",(err,success)=>resolve(success)))
+  //
+  //   populatePlace.then((place)=>res.status(200).json(place))
+  // });
+
+
+
+  // .populate('user')
+  // .then(plateList => {
+  //   res.json(plateList);
+  // })
+  // .reject(err => {
+  //   res.status(500).json(err);
+  // });
+
+
+  // res.status(403).json({ message: 'Unauthorized' });
 });
+
+
+
+
+
+
+
+
+
 
 mapRoutes.post('/place',  (req, res, next) => {
 
@@ -31,9 +66,7 @@ mapRoutes.post('/place',  (req, res, next) => {
   });
   console.log(placeOb);
   placeOb.save((error, placeObj) => {
-    if (error) {
-      next(error);
-    }
+    if (error) {next(error);}
     res.status(200).json({ message: 'Map save' });
   });
 });

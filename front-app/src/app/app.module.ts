@@ -18,9 +18,10 @@ import { GeoRouteComponent } from './geo-route/geo-route.component';
 import { GeoInfoComponent } from './geo-info/geo-info.component';
 import { GeoUserComponent } from './geo-user/geo-user.component';
 import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+
 
 
 const routes: Routes = [

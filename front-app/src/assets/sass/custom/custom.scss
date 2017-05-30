@@ -27,7 +27,10 @@ body {
   background-color: inherit;
   font-family: $font-text;
 }
-
+button {
+  border: none;
+  background: transparent;
+}
 
 
 .btn-custom-color-1 {

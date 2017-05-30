@@ -1,39 +1,33 @@
-<div class="panel panel-default panel-map" *ngIf="userPlaces">
-  <div class="panel-heading">Route selected</div>
-  <div class="panel-body">
-     <p>Tiempo seleccionado: <span>{{ userTime }}</span></p>
-     <p>Origen: <span>{{ origin.location.name }}</span></p>
-     <p>Destino: <span>{{ destination.location.name }}</span></p>
+<span *ngIf="userPlaces">
+  <div class="col-md-12">
+    <nav class="nav-results navbar">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <span class="navbar-brand">Time selected: <span>{{ userTime }}</span></span>
+          <span class="navbar-brand">Origin: <span>{{ origin.location.name }}</span></span>
+          <span class="navbar-brand">Destination: <span>{{ destination.location.name }}</span></span>
+          <div class="p-r">
+            <a class="navbar-brand" href="#">SAVE ROUTE</a>
+            <a class="navbar-brand" href="#">SEARCH AGAIN</a>
+          </div>
+        </div>
+      </div>
+    </nav>
   </div>
-  <ul class="list-group">
-    <li *ngFor="let item of userPlaces;let i = index" class="list-group-item">
-      <div class="box-imgroute">
-         <img src="{{item.photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})}}" alt="">
+  <div class="col-md-12">
+    <div class="col-md-3" *ngFor="let item of userPlaces;let i = index">
+      <div class="card card--small">
+        <span class="card__num">{{i}}</span>
+        <div class="card__image">
+          <img src="{{item.photos[0].getUrl({'maxWidth': 150, 'maxHeight': 150})}}" alt="">
+        </div>
+        <h2 class="card__title">{{item.name}}</h2>
+        <span class="card__subtitle">{{item.vicinity}}</span>
+        <div class="card__action-bar">
+          <button class="card__button"><i class="glyphicon glyphicon-heart"></i></button>
+          <button class="card__button">LEARN MORE</button>
+        </div>
       </div>
-      <div class="box-inforoute">
-        <h4 class="h4"><span>{{i}}</span> {{item.name}}</h4>
-        <p>{{item.vicinity}}</p>
-      </div>
-    </li>
-  </ul>
-</div>
-<div class="panel-group" id="accordion">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a (click)="getRoutes()" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><i class="glyphicon glyphicon-triangle-bottom"></i> Old routes</a>
-      </h4>
-    </div>
-    <div id="collapseOne" class="panel-collapse collapse">
-      <div class="panel-body">
-        <p>Vuelve a seleccionar antiguas rutas</p>
-      </div>
-      <ul class="list-group">
-        <a href="#" class="list-group-item active">Madrid</a>
-        <a href="#" class="list-group-item">Barcelona</a>
-        <a href="#" class="list-group-item">Dubín</a>
-        <a href="#" class="list-group-item">Munich</a>
-      </ul>
     </div>
   </div>
-</div>
+</span>

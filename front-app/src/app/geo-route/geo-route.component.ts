@@ -89,14 +89,8 @@ export class GeoRouteComponent implements OnInit {
       var totaltime = 0;
 
       function attachInfoWindow(marker, legIndex, leg) {
-        var open;
-        if(leg.opening_hours.open_now || leg.opening_hours.open_now === undefined){
-          open = "Open now"
-        }else{
-          open = "Close now"
-        }
         var infowindow = new google.maps.InfoWindow({
-          content: "<div class='windowPoi'><img src='"+leg.photos[0].getUrl({'maxWidth': 80, 'maxHeight': 80})+"'/><div class='windowPoi-info'><span>Stop number: <strong>"+legIndex+"</strong></span><h2 class='h2'>"+leg.name+"</h2><h3 class='h3'>"+open+"</h3><p>"+leg.vicinity+"</p></div></div>"
+          content: "<div class='windowPoi'><img src='"+leg.photos[0].getUrl({'maxWidth': 80, 'maxHeight': 80})+"'/><div class='windowPoi-info'><span>Stop number: <strong>"+legIndex+"</strong></span><h2 class='h2'>"+leg.name+"</h2><p>"+leg.vicinity+"</p></div></div>"
         });
         google.maps.event.addListener(marker, 'click', function () { //when the marker on map is clicked open info-window
           infowindow.open(map, marker);
