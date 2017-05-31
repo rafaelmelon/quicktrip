@@ -35,10 +35,6 @@ export class GeoRouteComponent implements OnInit {
   control = 0;
   userTime;
 
-  // infoUser : this.user._id;
-  // infoNamePlace;
-  // infoPlace;
-
   ngOnInit() {
     this.userTime = (this.destination.minutes - this.origin.minutes) * 60;
     this.updateDirections(100,this.userTime);
@@ -55,15 +51,11 @@ export class GeoRouteComponent implements OnInit {
         return;
       }
 
-
       var directionsService = new google.maps.DirectionsService;
       var servicePlaces = new google.maps.places.PlacesService(map);
       var arrAll = [];
       var showRoutesMap = [];
       var me = this;
-
-      // this.infoNamePlace = this.origin.vicinity;
-      // this.infoPlace = this.origin;
 
       var latLngA = new google.maps.LatLng({lat: this.origin.location.geometry.location.lat(), lng: this.origin.location.geometry.location.lng() });
       var latLngB = new google.maps.LatLng({lat: this.destination.location.geometry.location.lat(), lng: this.destination.location.geometry.location.lng() });
@@ -106,14 +98,11 @@ export class GeoRouteComponent implements OnInit {
         });
       }
 
-      // Create the icon
       var museum = {
         url: '../../assets/img/p-b-2.png',
-        // scaledSize: new google.maps.Size(40, 40),
       };
       var start = {
         url: '../../assets/img/p-a.png',
-        // scaledSize: new google.maps.Size(40, 40),
       };
 
       function doNearbyQuery(servicePlaces, request){
@@ -127,18 +116,11 @@ export class GeoRouteComponent implements OnInit {
                   stopover: true
                 });
               }
-              //arrAll.push(results)
             }
-            console.log("PASO 1 - FIRST :::::::::::::::::::::::::::::::::::::::::::")
-            console.log(results)
             let y = results.slice(0,maxSize-2)
             results = y;
-            console.log(wayPlaces)
             let x = wayPlaces.slice(0,maxSize-2)
             wayPlaces = x;
-            console.log("PASO 2 - SLICE :::::::::::::::::::::::::::::::::::::::::::")
-            console.log(wayPlaces)
-            console.log(results)
             arrAll.push(results)
             arrAll.push(wayPlaces)
             resolve(arrAll);
@@ -172,32 +154,17 @@ export class GeoRouteComponent implements OnInit {
             let totalTime= 0;
 
             while(totalTime<userTime && i<route.legs.length){
-              console.log("1. FINAL ROUTE ///(/(/(/(/(/)))))")
               var theLeg = route.legs[i];
-              console.log("este es LEGS ",route.legs.length)
-              console.log("este es I ",i)
               time = theLeg.duration.value;
-              totalTime += time;
-              console.log("Start..........: " + theLeg.start_address);
-              console.log("Destination....: " + theLeg.end_address);
-              console.log("Location.......: " + theLeg.start_location.lat() + "," + theLeg.start_location.lng());
-              console.log("Distance.......: " + theLeg.distance.text);
-              console.log("Travel time....: " + me.secondsToTime(theLeg.duration.value));
-              console.log("Service time...: " + me.secondsToTime(userTime));
-              console.log("POINT time seconds...: " + theLeg.duration.value);
-              console.log("TOTAL time seconds...: " + totalTime);
-              console.log("------------------------------");
+              totalTime += time + 1800;
               i++;
             }
-            console.log(that.control)
+
             if(that.control === 1) {
-              console.log("PASO 3 - CONTROL 1 :::::::::::::::::::::::::::::::::::::::::::")
-              console.log(response)
+
               that.updateDirections(i,userTime)
+
             } else if (that.control === 2) {
-              console.log("PASO 4 - CONTROL 2 :::::::::::::::::::::::::::::::::::::::::::")
-              console.log(response)
-              console.log(TestTest)
 
               me.dataRoute(response);
               me.showRoute(TestTest);
@@ -255,6 +222,7 @@ export class GeoRouteComponent implements OnInit {
       });
     });
   }
+
   public showRoute(route){
     this.eventCompleted.emit(route)
   }
@@ -262,21 +230,5 @@ export class GeoRouteComponent implements OnInit {
   public dataRoute(data){
     this.eventCompletedData.emit(data)
   }
-
-  public secondsToTime(secs) {
-     secs = Math.round(secs);
-     var hours = Math.floor(secs / (60 * 60));
-
-     var divisor_for_minutes = secs % (60 * 60);
-     var minutes = Math.floor(divisor_for_minutes / 60);
-
-     var divisor_for_seconds = divisor_for_minutes % 60;
-     var seconds = Math.ceil(divisor_for_seconds);
-
-     var t = hours + ":" + minutes + ":" + seconds;
-
-     return t;
-  }
-
 
 }
