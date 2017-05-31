@@ -1,31 +1,16 @@
 <span *ngIf="userPlaces">
   <div class="col-md-12">
-    <nav class="nav-results navbar">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <span class="navbar-brand">Time selected: <span>{{ userTime }}</span></span>
-          <span class="navbar-brand">Origin: <span>{{ origin.location.name }}</span></span>
-          <span class="navbar-brand">Destination: <span>{{ destination.location.name }}</span></span>
-          <div class="p-r">
-            <a class="navbar-brand" href="#">SAVE ROUTE</a>
-            <a class="navbar-brand" href="#">SEARCH AGAIN</a>
-          </div>
-        </div>
-      </div>
-    </nav>
-  </div>
-  <div class="col-md-12">
     <div class="col-md-3" *ngFor="let item of userPlaces;let i = index">
       <div class="card card--small">
-        <span class="card__num">{{i}}</span>
+        <span class="card__num">{{ i }}</span>
         <div class="card__image">
-          <img src="{{item.photos[0].getUrl({'maxWidth': 150, 'maxHeight': 150})}}" alt="">
+          <img src="{{ item.photos[0].getUrl({'maxWidth': 150, 'maxHeight': 150}) }}" alt="">
         </div>
-        <h2 class="card__title">{{item.name}}</h2>
-        <span class="card__subtitle">{{item.vicinity}}</span>
+        <h2 class="card__title">{{ item.name }}</h2>
+        <span class="card__subtitle">{{ item.vicinity }}</span>
         <div class="card__action-bar">
-          <button class="card__button"><i class="glyphicon glyphicon-heart"></i></button>
-          <button class="card__button">LEARN MORE</button>
+          <button class="card__button" (click)="savePlace(item)"><i class="glyphicon glyphicon-heart"></i></button>
+          <a class="card__button" href="https://google.com/maps/search/{{ item.name }}" target="'_blank">LEARN MORE</a>
         </div>
       </div>
     </div>

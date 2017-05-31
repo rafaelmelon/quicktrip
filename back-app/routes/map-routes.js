@@ -5,69 +5,48 @@ const passport   = require('passport');
 const bcrypt     = require('bcrypt');
 
 const User = require('../models/user-model');
-const Place = require('../models/user-routes');
+const Route = require('../models/user-routes');
+const Place = require('../models/user-places');
 
 const mapRoutes = express.Router();
 
-mapRoutes.get('/place/:id', (req, res, next) => {
-
-  Place.find({user : req.params._id}).populate('user').exec((error, mapBD)=>{
-
-     if (error) { next(error); }
-
-     res.json(mapBD);
-  });
-
-  // if (req.isAuthenticated()) {
-  //   res.json({ message: 'This is a private message' });
-  //   return;
-  // }
-
-
-
-  // let populatePlace;
-  // console.log(req.params._id);
-  // Place.find({user : req.params._id},(err,place)=>{
-  //   populatePlace = new Promise((resolve)=>place.populate("user",(err,success)=>resolve(success)))
-  //
-  //   populatePlace.then((place)=>res.status(200).json(place))
-  // });
-
-
-
-  // .populate('user')
-  // .then(plateList => {
-  //   res.json(plateList);
-  // })
-  // .reject(err => {
-  //   res.status(500).json(err);
-  // });
-
-
-  // res.status(403).json({ message: 'Unauthorized' });
-});
-
-
-
-
-
-
-
-
-
-
-mapRoutes.post('/place',  (req, res, next) => {
-
+mapRoutes.post('/route',  (req, res, next) => {
   const { user, place, mapBD } = req.body;
-  const placeOb = new Place({
+  const routeOb = new Route({
     user,
     place,
     mapBD
   });
-  console.log(placeOb);
-  placeOb.save((error, placeObj) => {
+  placeOb.save((error, routeOb) => {
     if (error) {next(error);}
-    res.status(200).json({ message: 'Map save' });
+    res.status(200).json({ message: 'Route save' });
+  });
+});
+mapRoutes.get('/route/:id', (req, res, next) => {
+  Route.find({user : req.params._id}).populate('user').exec((error, map)=>{
+    if (error) { next(error); }
+    res.json(map);
+  });
+});
+
+
+
+mapRoutes.post('/place',  (req, res, next) => {
+  const { user, name, location } = req.body;
+  const placeOb = new Place({
+    user,
+    name,
+    location
+  });
+  placeOb.save((error, placeOb) => {
+    if (error) {next(error);}
+    res.status(200).json({ message: 'Place save' });
+  });
+});
+mapRoutes.get('/place/:id', (req, res, next) => {
+  Place.find({user : req.params._id}).populate('user').exec((error, place)=>{
+    if (error) { next(error); }
+    res.json(place);
   });
 });
 

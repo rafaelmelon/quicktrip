@@ -36,6 +36,9 @@ input:-moz-placeholder { color:$primary-1-1; }
       padding-bottom: 15px;
       border-bottom: solid 1px $primary-1-1;
       transition: border 0.3s;
+      &.input-lowercase {
+        text-transform: inherit;
+      }
     }
     .panel-time {
       text-align: center;

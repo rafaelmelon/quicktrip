@@ -43,6 +43,8 @@ export class MapComponent implements OnInit {
   timeDestination;
   dataComplete = false;
 
+  userTime;
+
   constructor(
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
@@ -53,15 +55,6 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
 
-    $('[data-toggle="offcanvas"]').click(function () {
-      $('.row-offcanvas').toggleClass('active')
-    });
-
-    $('.js-btn-showmap').click(function () {
-      $('.g-route').addClass('v-none')
-      $('.g-map').removeClass('v-hidden')
-    });
-
     this.user = this.session.user;
 
     //set google maps defaults
@@ -69,9 +62,14 @@ export class MapComponent implements OnInit {
     this.latitude = 39.8282;
     this.longitude = -98.5795;
     this.iconurl = "../../assets/img/p-c.png";
+
     this.setCurrentPosition();
+
   }
 
+  private dataCompleteFalse(){
+    this.dataComplete = false;
+  }
 
   private setPickUpLocation( place:any ) {
     //verify result
@@ -94,6 +92,21 @@ export class MapComponent implements OnInit {
     }
   }
 
+  public secondsToTime(secs) {
+     secs = Math.round(secs);
+     var hours = Math.floor(secs / (60 * 60));
+
+     var divisor_for_minutes = secs % (60 * 60);
+     var minutes = Math.floor(divisor_for_minutes / 60);
+
+     var divisor_for_seconds = divisor_for_minutes % 60;
+     var seconds = Math.ceil(divisor_for_seconds);
+
+     var t = hours + ":" + minutes + ":" + seconds;
+
+     return t;
+  }
+
   private getMapCustomStyles() {
     // Write your Google Map Custom Style Code Here.
   }
@@ -106,6 +119,10 @@ export class MapComponent implements OnInit {
   destinationSelected(destinationAll){
     this.destination = destinationAll;
     this.location = destinationAll.location;
+
+    // Añade tiempo a la barra de información
+    this.userTime = (this.destination.minutes - this.origin.minutes) * 60;
+    this.userTime = this.secondsToTime(this.userTime);
     this.dataComplete = true;
   }
 

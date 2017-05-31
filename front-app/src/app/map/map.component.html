@@ -24,6 +24,21 @@
         <sebm-google-map-directions *ngIf="location" [origin]="origin" [destination]="destination" (eventCompleted)="showRoute($event)" (eventCompletedData)="dataRoute($event)"></sebm-google-map-directions>
       </sebm-google-map>
     </div>
+    <div class="col-md-12" *ngIf="userTime">
+      <nav class="nav-results navbar">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <span class="navbar-brand">Time selected: <span>{{ userTime }}</span></span>
+            <span class="navbar-brand">Origin: <span>{{ origin.location.name }}</span></span>
+            <span class="navbar-brand">Destination: <span>{{ destination.location.name }}</span></span>
+            <div class="p-r">
+              <a class="navbar-brand" (click)="setMapRoute()">SAVE ROUTE</a>
+              <a class="navbar-brand" (click)="dataCompleteFalse()">SEARCH AGAIN</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
     <app-geo-info *ngIf="location" [origin]="origin" [destination]="destination" [userPlaces]="userPlaces" [userPlacesRoute]="userPlacesRoute"></app-geo-info>
   </div>
 </div>

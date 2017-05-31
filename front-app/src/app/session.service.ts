@@ -57,39 +57,20 @@ export class SessionService {
   }
 
   getMapRoute(id) {
-    return this.http.get(`${BASEURL}/place/${id}`, this.options)
+    return this.http.get(`${BASEURL}/route/${id}`, this.options)
       .map(res => res.json())
       .catch(this.handleError);
   }
 
-  getList(): Array<Object> {
-    return this.contacts;
+  postMapRoute(map) {
+    return this.http.post(`${BASEURL}/route`, map, this.options)
+      .map(res => res.json())
+      .catch(this.handleError);
   }
 
-  postMapRoute(map) {
-    return this.http.post(`${BASEURL}/place`, map, this.options)
+  postMapPlace(place) {
+    return this.http.post(`${BASEURL}/place`, place, this.options)
       .map(res => res.json())
       .catch(this.handleError);
   }
 }
-
-
-
-
-
-// @Injectable()
-// export class PhoneService {
-//
-//   options = {};
-//   constructor(private http: Http) {
-//   }
-//
-//   getPhoneList(){
-//     return this.http.get(`${BASEURL}/api/phones/`,this.options).map(res => res.json());
-//   }
-//
-//   getPhoneDetails(id){
-//     return this.http.get(`${BASEURL}/api/phones/${id}`,this.options).map(res => res.json());
-//   }
-//
-// }

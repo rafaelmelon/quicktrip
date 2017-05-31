@@ -16,43 +16,31 @@ export class GeoInfoComponent implements OnInit {
 
   user: any;
   error: string;
-  routesArray: any;
 
-
-  userTime;
+  public newPlace = {
+    user: '',
+    name: '',
+    location: '',
+  };
 
   constructor(private session: SessionService) { }
 
   ngOnInit() {
-    this.userTime = (this.destination.minutes - this.origin.minutes) * 60;
-    this.userTime = this.secondsToTime(this.userTime);
 
-    this.routesArray;
-    console.log("HOLA MAPAS Y RUTAS");
-    console.log(this.routesArray);
+    this.user = this.session.user;
+
   }
 
-  public getRoutes() {
-    this.session.getMapRoute(this.user._id)
-      .subscribe(
-        (data) => this.routesArray = data,
-        (err) => this.error = err
-      );
-  }
+  public savePlace(place){
+    this.newPlace.user = this.user._id;
+    this.newPlace.name = place.name;
+    this.newPlace.location = place.vicinity;
 
-  public secondsToTime(secs) {
-     secs = Math.round(secs);
-     var hours = Math.floor(secs / (60 * 60));
-
-     var divisor_for_minutes = secs % (60 * 60);
-     var minutes = Math.floor(divisor_for_minutes / 60);
-
-     var divisor_for_seconds = divisor_for_minutes % 60;
-     var seconds = Math.ceil(divisor_for_seconds);
-
-     var t = hours + ":" + minutes + ":" + seconds;
-
-     return t;
+    this.session.postMapPlace(this.newPlace)
+    .subscribe(
+      (user) => this.successCb(user),
+      (err) => this.errorCb(err)
+    );
   }
 
   errorCb(err) {

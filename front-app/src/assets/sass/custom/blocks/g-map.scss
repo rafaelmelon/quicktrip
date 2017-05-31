@@ -55,6 +55,7 @@
       a.navbar-brand {
         font-size: 14px;
         color: $primary-3;
+        cursor: pointer;
         @media (max-width: 768px) {
           color: $white;
           text-align: center;
@@ -251,6 +252,9 @@
       line-height: 50px;
       padding: 0 15px;
       color: $primary-3;
+      &:hover {
+        text-decoration: none;
+      }
     }
   }
   &.card--small {
