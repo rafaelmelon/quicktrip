@@ -131,7 +131,7 @@ export class GeoRouteComponent implements OnInit {
       this.directionsDisplay.setDirections({routes: []});
 
       doNearbyQuery(servicePlaces, request).then((successMessage) => {
-        var TestTest = successMessage[0]
+        var responseAll = successMessage[0]
         var optRoute = {
           origin: {placeId : this.originPlaceId },
           destination: {placeId : this.destinationPlaceId },
@@ -148,7 +148,7 @@ export class GeoRouteComponent implements OnInit {
           that.control++;
           if (status === 'OK') {
 
-            showRoutesMap = TestTest
+            showRoutesMap = responseAll
             var route = response.routes[0];
             let i = 0;
             let totalTime= 0;
@@ -167,7 +167,10 @@ export class GeoRouteComponent implements OnInit {
             } else if (that.control === 2) {
 
               me.dataRoute(response);
-              me.showRoute(TestTest);
+              me.showRoute(responseAll);
+
+              console.log(response);
+              console.log(responseAll);
 
               me.directionsDisplay.setDirections(response);
 
@@ -189,16 +192,16 @@ export class GeoRouteComponent implements OnInit {
               });
               attachInfoWindowInfo(markerDestination, 25, response.routes[0].legs.slice(-1)[0]);
 
-              for(var m = 0;m < TestTest.length;m++){
+              for(var m = 0;m < responseAll.length;m++){
                 var marker = new google.maps.Marker({
                   map: map,
                   zIndex:99999999,
-                  position: TestTest[m].geometry.location,
+                  position: responseAll[m].geometry.location,
                   optimized: false,
                   icon: museum,
                   id: m,
                 });
-                attachInfoWindow(marker, m, TestTest[m]);
+                attachInfoWindow(marker, m, responseAll[m]);
               }
             }
           } else {
@@ -223,12 +226,12 @@ export class GeoRouteComponent implements OnInit {
     });
   }
 
-  public showRoute(route){
-    this.eventCompleted.emit(route)
-  }
-
   public dataRoute(data){
     this.eventCompletedData.emit(data)
+  }
+
+  public showRoute(route){
+    this.eventCompleted.emit(route)
   }
 
 }

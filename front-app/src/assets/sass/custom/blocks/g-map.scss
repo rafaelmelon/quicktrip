@@ -79,6 +79,18 @@
         &:after {
           display: none;
         }
+        &:focus {
+          color: $grey-3;
+          text-decoration: none;
+        }
+        &:hover {
+          color: $grey-3;
+          text-decoration: none;
+        }
+        &:active {
+          color: $grey-3;
+          text-decoration: none;
+        }
       }
     }
   }
@@ -251,7 +263,16 @@
       line-height: 50px;
       padding: 0 15px;
       color: $primary-3;
+      &:focus {
+        color: $grey-3;
+        text-decoration: none;
+      }
       &:hover {
+        color: $grey-3;
+        text-decoration: none;
+      }
+      &:active {
+        color: $grey-3;
         text-decoration: none;
       }
     }
@@ -289,9 +310,11 @@
     }
     &.card--place {
       .card__title {
+        font-size: 15px;
         left: 30px;
       }
       .card__subtitle {
+        font-size: 13px;
         left: 30px;
       }
       .card__action-bar {

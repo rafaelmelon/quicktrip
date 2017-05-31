@@ -31,11 +31,20 @@
       .item {
         min-height: 400px;
         .h1 {
+          margin: 20px auto;
         }
         .h2 {
+          font-size: 22px;
+          margin: 0 20px 40px 20px;
         }
         .img-info {
-
+          text-align: center;
+          img {
+            width: 30%;
+            @media (max-width: 768px) {
+              width: 40%;
+            }
+          }
         }
       }
     }

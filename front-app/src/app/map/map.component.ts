@@ -303,24 +303,23 @@ export class MapComponent implements OnInit {
     this.dataComplete = true;
   }
 
-  showRoute(route){
-    this.userPlaces = route;
-  }
-
   dataRoute(data){
     this.userPlacesRoute = data;
-    console.log("userPlacesRoute")
+  }
+
+  showRoute(route){
+    this.userPlaces = route;
   }
 
   setMapRoute(){
     this.placeInfo.user = this.user._id;
     this.placeInfo.place = this.location.vicinity;
-    for(var i = 0; i < this.userPlacesRoute.length;i++){
+    for(var i = 0; i < this.userPlaces.length;i++){
       this.placeInfo.mapBD.push(
         {
-          icon: this.userPlacesRoute[i].icon,
-          name: this.userPlacesRoute[i].name,
-          vicinity: this.userPlacesRoute[i].vicinity,
+          icon: this.userPlaces[i].photos[0].getUrl({'maxWidth': 150, 'maxHeight': 150}),
+          name: this.userPlaces[i].name,
+          vicinity: this.userPlaces[i].vicinity,
         }
       );
     }

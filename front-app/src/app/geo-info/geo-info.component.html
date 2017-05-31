@@ -1,8 +1,8 @@
 <span *ngIf="userPlaces">
-  <div class="col-md-12">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let item of userPlaces;let i = index">
+  <div class="col-md-12 info-bg">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" *ngFor="let item of userPlaces;let i = index">
       <div class="card card--small">
-        <span class="card__num">{{ i }}</span>
+        <span class="card__num">{{ i+1 }}</span>
         <div class="card__image">
           <img src="{{ item.photos[0].getUrl({'maxWidth': 150, 'maxHeight': 150}) }}" alt="">
         </div>
