@@ -61,13 +61,17 @@ export class SessionService {
       .map(res => res.json())
       .catch(this.handleError);
   }
-
   postMapRoute(map) {
     return this.http.post(`${BASEURL}/route`, map, this.options)
       .map(res => res.json())
       .catch(this.handleError);
   }
 
+  getMapPlace(id) {
+    return this.http.get(`${BASEURL}/place/${id}`, this.options)
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
   postMapPlace(place) {
     return this.http.post(`${BASEURL}/place`, place, this.options)
       .map(res => res.json())

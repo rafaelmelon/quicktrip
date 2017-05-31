@@ -287,7 +287,20 @@
     .card__action-bar {
       left: 100px;
     }
+    &.card--place {
+      .card__title {
+        left: 30px;
+      }
+      .card__subtitle {
+        left: 30px;
+      }
+      .card__action-bar {
+        left: 0;
+        text-align: center;
+      }
+    }
   }
+
 }
 
 

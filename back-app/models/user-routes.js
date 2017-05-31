@@ -3,21 +3,14 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
-var routes = new Schema({
-    icon: {type: String, required: true},
-    name: {type: String, required: true},
-    vicinity: {type: String, required: true}
-});
-
-
 const routesSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
   place: String,
-  mapBD: [routes]
+  mapBD: [{ icon: 'string', name: 'string', vicinity: 'string' }]
 });
 
 
-module.exports = mongoose.model('Map', routesSchema);
+module.exports = mongoose.model('Route', routesSchema);

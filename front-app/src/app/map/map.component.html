@@ -14,7 +14,7 @@
 <div class="g-map" *ngIf="dataComplete">
   <div class="row">
     <div class="col-md-12">
-      <sebm-google-map [styles]="styles" [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom" [styles]="mapCustomStyles">
+      <sebm-google-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom" [styles]="mapCustomStyles">
         <sebm-google-map-marker [latitude]="latitude" [longitude]="longitude" [iconUrl]="iconurl">
           <sebm-google-map-info-window>
             <strong>Current position</strong>

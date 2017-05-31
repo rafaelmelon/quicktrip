@@ -17,13 +17,15 @@ mapRoutes.post('/route',  (req, res, next) => {
     place,
     mapBD
   });
-  placeOb.save((error, routeOb) => {
+
+  routeOb.save((error, objRoute) => {
     if (error) {next(error);}
-    res.status(200).json({ message: 'Route save' });
+    res.status(200).json(objRoute);
   });
 });
+
 mapRoutes.get('/route/:id', (req, res, next) => {
-  Route.find({user : req.params._id}).populate('user').exec((error, map)=>{
+  Route.find({user : req.params.id}).populate('user').exec((error, map)=>{
     if (error) { next(error); }
     res.json(map);
   });
@@ -38,16 +40,19 @@ mapRoutes.post('/place',  (req, res, next) => {
     name,
     location
   });
-  placeOb.save((error, placeOb) => {
+  placeOb.save((error, objPlace) => {
     if (error) {next(error);}
-    res.status(200).json({ message: 'Place save' });
+    res.status(200).json(objPlace);
   });
 });
+
 mapRoutes.get('/place/:id', (req, res, next) => {
-  Place.find({user : req.params._id}).populate('user').exec((error, place)=>{
+
+  Place.find({user : req.params.id}).populate('user').exec((error, place)=>{
     if (error) { next(error); }
     res.json(place);
   });
 });
+
 
 module.exports = mapRoutes;

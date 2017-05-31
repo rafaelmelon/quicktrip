@@ -62,115 +62,16 @@ export class MapComponent implements OnInit {
     this.latitude = 39.8282;
     this.longitude = -98.5795;
     this.iconurl = "../../assets/img/p-c.png";
-
-    this.setCurrentPosition();
-
-      this.mapCustomStyles = [
+    this.mapCustomStyles = [
     {
-        "featureType": "all",
-        "elementType": "labels.text.fill",
+        "featureType": "water",
+        "elementType": "geometry",
         "stylers": [
             {
-                "color": "#000000"
-            }
-        ]
-    },
-    {
-        "featureType": "all",
-        "elementType": "labels.text.stroke",
-        "stylers": [
-            {
-                "visibility": "on"
-            },
-            {
-                "color": "#ffffff"
-            },
-            {
-                "weight": "4"
-            }
-        ]
-    },
-    {
-        "featureType": "all",
-        "elementType": "labels.icon",
-        "stylers": [
-            {
-                "visibility": "on"
-            },
-            {
-                "saturation": "-100"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "color": "#ffffff"
-            },
-            {
-                "lightness": 20
-            },
-            {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative",
-        "elementType": "geometry.stroke",
-        "stylers": [
-            {
-                "color": "#000000"
+                "color": "#e9e9e9"
             },
             {
                 "lightness": 17
-            },
-            {
-                "weight": 1.2
-            }
-        ]
-    },
-    {
-        "featureType": "administrative.locality",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative.neighborhood",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative.land_parcel",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "on"
-            },
-            {
-                "lightness": "80"
-            }
-        ]
-    },
-    {
-        "featureType": "landscape",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "simplified"
-            },
-            {
-                "color": "#797979"
             }
         ]
     },
@@ -179,7 +80,7 @@ export class MapComponent implements OnInit {
         "elementType": "geometry",
         "stylers": [
             {
-                "color": "#ffffff"
+                "color": "#f5f5f5"
             },
             {
                 "lightness": 20
@@ -187,29 +88,53 @@ export class MapComponent implements OnInit {
         ]
     },
     {
-        "featureType": "landscape.man_made",
-        "elementType": "all",
+        "featureType": "road.highway",
+        "elementType": "geometry.fill",
         "stylers": [
             {
-                "visibility": "on"
+                "color": "#ffffff"
+            },
+            {
+                "lightness": 17
             }
         ]
     },
     {
-        "featureType": "landscape.natural.landcover",
-        "elementType": "all",
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
         "stylers": [
             {
-                "visibility": "on"
+                "color": "#ffffff"
+            },
+            {
+                "lightness": 29
+            },
+            {
+                "weight": 0.2
             }
         ]
     },
     {
-        "featureType": "landscape.natural.terrain",
-        "elementType": "all",
+        "featureType": "road.arterial",
+        "elementType": "geometry",
         "stylers": [
             {
-                "visibility": "off"
+                "color": "#ffffff"
+            },
+            {
+                "lightness": 18
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            },
+            {
+                "lightness": 16
             }
         ]
     },
@@ -218,132 +143,26 @@ export class MapComponent implements OnInit {
         "elementType": "geometry",
         "stylers": [
             {
-                "color": "#dfdfdf"
+                "color": "#f5f5f5"
             },
             {
                 "lightness": 21
-            },
-            {
-                "visibility": "on"
             }
         ]
     },
     {
-        "featureType": "road.highway",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "color": "#fed41c"
-            },
-            {
-                "visibility": "on"
-            },
-            {
-                "weight": "3.00"
-            }
-        ]
-    },
-    {
-        "featureType": "road.highway",
-        "elementType": "geometry.stroke",
-        "stylers": [
-            {
-                "color": "#fed41c"
-            },
-            {
-                "gamma": "0.6"
-            }
-        ]
-    },
-    {
-        "featureType": "road.highway.controlled_access",
+        "featureType": "poi.park",
         "elementType": "geometry",
         "stylers": [
             {
-                "visibility": "on"
+                "color": "#dedede"
             },
             {
-                "color": "#fed41c"
-            },
-            {
-                "weight": "4.00"
+                "lightness": 21
             }
         ]
     },
     {
-        "featureType": "road.highway.controlled_access",
-        "elementType": "geometry.stroke",
-        "stylers": [
-            {
-                "weight": "1"
-            },
-            {
-                "gamma": "0.6"
-            }
-        ]
-    },
-    {
-        "featureType": "road.arterial",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#aeaeae"
-            },
-            {
-                "lightness": 18
-            },
-            {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
-        "featureType": "road.arterial",
-        "elementType": "geometry.stroke",
-        "stylers": [
-            {
-                "color": "#b6b6b6"
-            }
-        ]
-    },
-    {
-        "featureType": "road.local",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "on"
-            },
-            {
-                "color": "#656565"
-            }
-        ]
-    },
-    {
-        "featureType": "road.local",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#c6c6c6"
-            },
-            {
-                "lightness": 16
-            }
-        ]
-    },
-    {
-        "featureType": "road.local",
-        "elementType": "geometry.stroke",
-        "stylers": [
-            {
-                "color": "#b1b1b1"
-            },
-            {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
-        "featureType": "road.local",
         "elementType": "labels.text.stroke",
         "stylers": [
             {
@@ -351,6 +170,31 @@ export class MapComponent implements OnInit {
             },
             {
                 "color": "#ffffff"
+            },
+            {
+                "lightness": 16
+            }
+        ]
+    },
+    {
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "saturation": 36
+            },
+            {
+                "color": "#333333"
+            },
+            {
+                "lightness": 40
+            }
+        ]
+    },
+    {
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
             }
         ]
     },
@@ -359,32 +203,44 @@ export class MapComponent implements OnInit {
         "elementType": "geometry",
         "stylers": [
             {
-                "color": "#bdbdbd"
+                "color": "#f2f2f2"
             },
             {
                 "lightness": 19
-            },
-            {
-                "visibility": "on"
             }
         ]
     },
     {
-        "featureType": "water",
-        "elementType": "geometry",
+        "featureType": "administrative",
+        "elementType": "geometry.fill",
         "stylers": [
             {
-                "color": "#c0d8e3"
+                "color": "#fefefe"
+            },
+            {
+                "lightness": 20
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#fefefe"
             },
             {
                 "lightness": 17
             },
             {
-                "visibility": "on"
+                "weight": 1.2
             }
         ]
     }
 ]
+
+    this.setCurrentPosition();
+
 
   }
 
@@ -453,17 +309,18 @@ export class MapComponent implements OnInit {
 
   dataRoute(data){
     this.userPlacesRoute = data;
+    console.log("userPlacesRoute")
   }
 
   setMapRoute(){
     this.placeInfo.user = this.user._id;
     this.placeInfo.place = this.location.vicinity;
-    for(var i = 0; i < this.userPlaces.length;i++){
+    for(var i = 0; i < this.userPlacesRoute.length;i++){
       this.placeInfo.mapBD.push(
         {
-          icon: this.userPlaces[i].icon,
-          name: this.userPlaces[i].name,
-          vicinity: this.userPlaces[i].vicinity,
+          icon: this.userPlacesRoute[i].icon,
+          name: this.userPlacesRoute[i].name,
+          vicinity: this.userPlacesRoute[i].vicinity,
         }
       );
     }

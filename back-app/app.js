@@ -11,10 +11,10 @@ const authRoutes = require('./routes/auth-routes');
 const mapRoutes = require('./routes/map-routes');
 const session    = require('express-session');
 const passport   = require('passport');
-const cors = require('cors')
+const cors = require('cors');
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/angular-auth');
+mongoose.connect('mongodb://localhost/quicktravel');
 
 const passportSetup = require('./config/passport');
 
