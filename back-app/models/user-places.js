@@ -9,7 +9,8 @@ const placesSchema = new Schema({
     ref: 'User'
   },
   name: String,
-  location: String
+  location: String,
+  icon: String
 });
 
 module.exports = mongoose.model('Place', placesSchema);

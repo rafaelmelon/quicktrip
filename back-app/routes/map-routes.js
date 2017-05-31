@@ -11,10 +11,11 @@ const Place = require('../models/user-places');
 const mapRoutes = express.Router();
 
 mapRoutes.post('/route',  (req, res, next) => {
-  const { user, place, mapBD } = req.body;
+  const { user, place, time, mapBD } = req.body;
   const routeOb = new Route({
     user,
     place,
+    time,
     mapBD
   });
 
@@ -34,11 +35,12 @@ mapRoutes.get('/route/:id', (req, res, next) => {
 
 
 mapRoutes.post('/place',  (req, res, next) => {
-  const { user, name, location } = req.body;
+  const { user, name, location, icon } = req.body;
   const placeOb = new Place({
     user,
     name,
-    location
+    location,
+    icon
   });
   placeOb.save((error, objPlace) => {
     if (error) {next(error);}

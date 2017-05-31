@@ -11,12 +11,6 @@ export class SessionService {
   options = {widthCredentials:true};
   user :any;
 
-  contacts: Array<Object> = [
-    { id: 100, name: 'Andy' },
-    { id: 201, name: 'George' },
-    { id: 302, name: 'Max' }
-  ];
-
   constructor(private http: Http) { }
 
   handleError(e) {

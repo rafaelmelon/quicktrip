@@ -9,6 +9,7 @@ const routesSchema = new Schema({
     ref: 'User'
   },
   place: String,
+  time: String,
   mapBD: [{ icon: 'string', name: 'string', vicinity: 'string' }]
 });
 

@@ -171,6 +171,17 @@
     text-align: center;
     font-size: 25px;
   }
+
+  i.card__mark {
+    color: $primary-1;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    z-index: 2;
+    font-size: 45px;
+    text-shadow: 0 2px 2px rgba(0,0,0,0.3);
+  }
+
   .card__image {
     position: absolute;
     background-size: cover;

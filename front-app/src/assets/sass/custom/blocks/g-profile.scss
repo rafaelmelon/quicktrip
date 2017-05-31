@@ -11,12 +11,31 @@
     .tag {
       width: 100%;
       color: $white;
-      background-color: $black;
-      padding: 20px;
-      margin-bottom: 16px;
+      padding: 0 0 20px 0;
       .h3 {
+        font-size: 40px;
         margin: 0;
       }
+    }
+    .time {
+      margin-bottom: 20px;
+      font-size: 18px;
+      color: white;
+      border-bottom: 1px solid $primary-1-1;
+      padding-bottom: 20px;
+    }
+    .comments {
+      color: $primary-1-1;
+      font-size: 13px;
+      font-style: italic;
+      line-height: 20px;
+    }
+    .comments-textarea {
+      color: white;
+      font-size: 13px;
+    }
+    textarea {
+      margin-bottom: 20px;
     }
   }
   .nav-tabs {

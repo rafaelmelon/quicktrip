@@ -45,11 +45,11 @@ export class GeoUserComponent implements OnInit {
     this.session.getMapRoute(this.user._id)
     .subscribe(data => {
       this.allRoutes = data;
-      console.log(this.allRoutes);
     });
 
     this.session.getMapPlace(this.user._id)
     .subscribe(data => {
+      console.log(data);
       this.allPlaces = data;
     });
 
