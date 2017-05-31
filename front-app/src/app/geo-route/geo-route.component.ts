@@ -71,9 +71,9 @@ export class GeoRouteComponent implements OnInit {
       this.directionsDisplay.setMap(map);
       this.directionsDisplay.setOptions({
         polylineOptions: {
-          strokeWeight: 7,
-          strokeOpacity: 0.9,
-          strokeColor:  '#00A63F'
+          strokeWeight: 5,
+          strokeOpacity: 0.8,
+          strokeColor:  '#3F41B2'
         },
         suppressMarkers: true
       });
@@ -109,11 +109,11 @@ export class GeoRouteComponent implements OnInit {
       // Create the icon
       var museum = {
         url: '../../assets/img/p-b-2.png',
-        scaledSize: new google.maps.Size(40, 40),
+        // scaledSize: new google.maps.Size(40, 40),
       };
       var start = {
         url: '../../assets/img/p-a.png',
-        scaledSize: new google.maps.Size(40, 40),
+        // scaledSize: new google.maps.Size(40, 40),
       };
 
       function doNearbyQuery(servicePlaces, request){

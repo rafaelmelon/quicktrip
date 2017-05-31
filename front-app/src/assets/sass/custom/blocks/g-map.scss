@@ -135,9 +135,8 @@
 
 .card {
   will-change: transform;
-  margin: 8px;
+  margin: 0 0 16px 0;
   position: relative;
-  border-radius: 2px;
   overflow: hidden;
   background-color: $white;
   height: 35%;

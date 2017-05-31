@@ -1,0 +1,64 @@
+// main: ../../main.scss
+
+.g-profile {
+  background-color: $primary-1;
+  height: 100%;
+  .b-panel-routes {
+    width: 100%;
+    padding: 20px 0;
+    border-bottom: 1px solid $primary-1-1;
+    float: left;
+    .tag {
+      width: 100%;
+      color: $white;
+      background-color: $black;
+      padding: 20px;
+      margin-bottom: 16px;
+      .h3 {
+        margin: 0;
+      }
+    }
+  }
+  .nav-tabs {
+    background-color: $white;
+    border-bottom: 1px solid $white;
+    > li {
+      width: 33.333333%;
+      text-align: center;
+    }
+  }
+  .nav-tabs > li.active > a,
+  .nav-tabs > li.active > a:focus,
+  .nav-tabs > li.active > a:hover {
+    border-width: 0;
+  }
+  .nav-tabs > li > a {
+    border-radius: 0;
+    border: none; color: $grey-3;
+    height: 50px;
+    padding: 15px;
+    text-transform: uppercase;
+  }
+  .nav-tabs > li.active > a,
+  .nav-tabs > li > a:hover {
+    border: none;
+    color: $primary-3 !important;
+    background: transparent;
+  }
+  .nav-tabs > li > a::after {
+    content: "";
+    background: $primary-3;
+    height: 2px; position:
+    absolute;
+    width: 100%;
+    left: 0px;
+    bottom: -1px;
+    transition: all 250ms ease 0s;
+    transform: scale(0);
+  }
+  .nav-tabs > li.active > a::after,
+  .nav-tabs > li:hover > a::after {
+    transform: scale(1);
+  }
+
+}

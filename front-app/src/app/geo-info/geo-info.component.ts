@@ -23,6 +23,8 @@ export class GeoInfoComponent implements OnInit {
     location: '',
   };
 
+  alert: string;
+
   constructor(private session: SessionService) { }
 
   ngOnInit() {
@@ -32,6 +34,7 @@ export class GeoInfoComponent implements OnInit {
   }
 
   public savePlace(place){
+
     this.newPlace.user = this.user._id;
     this.newPlace.name = place.name;
     this.newPlace.location = place.vicinity;
@@ -41,6 +44,8 @@ export class GeoInfoComponent implements OnInit {
       (user) => this.successCb(user),
       (err) => this.errorCb(err)
     );
+
+    this.alert = "Place saved!";
   }
 
   errorCb(err) {

@@ -22,16 +22,13 @@ import { HomeComponent } from './home/home.component';
 
 import { RouterModule, Routes } from '@angular/router';
 
-
-
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home',  component: HomeComponent },
   { path: 'login',  component: LoginComponent },
   { path: 'geomap',  component: MapComponent },
-  { path: 'geoplace',  component: GeoUserComponent },
+  { path: 'geouser',  component: GeoUserComponent },
 ];
-
 
 @NgModule({
   declarations: [
@@ -51,7 +48,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpModule,
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyC12pLR74uW37zzLMdg3MttBQZ3S-K928k",
+      apiKey: "AIzaSyBRva2OV726n_b6UmtgS6AiuIXrSx-YFTo",
       libraries: ["places"]
     }),
     RouterModule.forRoot(routes)

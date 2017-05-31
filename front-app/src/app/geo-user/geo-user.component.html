@@ -1,10 +1,60 @@
 <app-navbar></app-navbar>
-<table>
-  <tr>
-    <th> Id</th>
-    <th> Name </th>
-    <th> Details (btn) </th>
-    <th> Details (link) </th>
-    <th> Opt. Param </th>
-  </tr>
-</table>
+<div class="g-profile">
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#routes" aria-controls="routes" role="tab" data-toggle="tab">Routes</a></li>
+    <li role="presentation"><a href="#places" aria-controls="places" role="tab" data-toggle="tab">Places</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="routes">
+        <div class="b-panel-routes">
+          <div class="col-md-12">
+            <div class="col-md-2 text-center">
+              <div class="tag">
+                <h3 class="h3">Madrid</h3>
+              </div>
+            </div>
+            <div class="col-md-10">
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                <div class="card card--small">
+                  <span class="card__num">1</span>
+                  <div class="card__image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Museo_del_Prado_%28Madrid%29_04.jpg/300px-Museo_del_Prado_%28Madrid%29_04.jpg" alt="">
+                  </div>
+                  <h2 class="card__title">Museo del Prado</h2>
+                  <span class="card__subtitle">Paseo del prado, 2, Madrid</span>
+                  <div class="card__action-bar">
+                    <a class="card__button" href="https://google.com/maps/search/" target="'_blank">LEARN MORE</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="places">
+        <div class="b-panel-routes">
+          <div class="col-md-12">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+              <div class="card card--small">
+                <span class="card__num">1</span>
+                <div class="card__image">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Museo_del_Prado_%28Madrid%29_04.jpg/300px-Museo_del_Prado_%28Madrid%29_04.jpg" alt="">
+                </div>
+                <h2 class="card__title">Museo del Prado</h2>
+                <span class="card__subtitle">Paseo del prado, 2, Madrid</span>
+                <div class="card__action-bar">
+                  <a class="card__button" href="https://google.com/maps/search/" target="'_blank">LEARN MORE</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="profile">
+        <div class="col-md-12">Empty</div>
+      </div>
+    </div>
+  </div>
+</div>
