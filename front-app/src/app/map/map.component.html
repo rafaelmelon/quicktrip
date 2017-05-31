@@ -3,10 +3,13 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-12 col-md-offset-0 col-lg-8 col-lg-offset-2">
-        <app-geo-input [label]="Origin" (selectionCompleted)="originSelected($event)"></app-geo-input>
+        <app-geo-type (selectionCompletedType)="typeSelect($event)"></app-geo-type>
       </div>
       <div class="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-12 col-md-offset-0 col-lg-8 col-lg-offset-2">
-        <app-geo-input [label]="Destination" (selectionCompleted)="destinationSelected($event)"></app-geo-input>
+        <app-geo-input name="Origin time" (selectionCompleted)="originSelected($event)"></app-geo-input>
+      </div>
+      <div class="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-12 col-md-offset-0 col-lg-8 col-lg-offset-2">
+        <app-geo-input name="Destination time" (selectionCompleted)="destinationSelected($event)"></app-geo-input>
       </div>
     </div>
   </div>
@@ -20,7 +23,7 @@
             <strong>Current position</strong>
           </sebm-google-map-info-window>
         </sebm-google-map-marker>
-        <sebm-google-map-directions *ngIf="location" [origin]="origin" [destination]="destination" (eventCompleted)="showRoute($event)" (eventCompletedData)="dataRoute($event)"></sebm-google-map-directions>
+        <sebm-google-map-directions *ngIf="location" [typeSearch]="typeSearch" [origin]="origin" [destination]="destination" (eventCompleted)="showRoute($event)" (eventCompletedData)="dataRoute($event)"></sebm-google-map-directions>
       </sebm-google-map>
     </div>
     <div class="col-md-12" *ngIf="userTime">

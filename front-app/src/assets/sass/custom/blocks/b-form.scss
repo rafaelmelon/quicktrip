@@ -41,7 +41,7 @@ input:-moz-placeholder { color:$primary-1-1; }
         text-transform: inherit;
       }
     }
-    .panel-time {
+    .panel-time, .panel-type {
       text-align: center;
       margin-bottom: 30px;
       select {
@@ -59,7 +59,6 @@ input:-moz-placeholder { color:$primary-1-1; }
         font-size: 15px;
         color: $primary-1-1;
         text-transform: uppercase;
-
         letter-spacing: 0.1em;
         padding-bottom: 15px;
       }
@@ -68,6 +67,11 @@ input:-moz-placeholder { color:$primary-1-1; }
         height: 34px;
         padding: 0px 5px;
         font-size: 22px;
+      }
+    }
+    .panel-type {
+      select {
+        width: 250px;
       }
     }
     input[type="text"]:focus,

@@ -1,10 +1,9 @@
 <div class="b-form form-route">
   <div class="panel panel-info">
-    <div class="panel-title">{{label}}</div>
     <div class="panel-body">
       <div class="form-group">
         <div class="panel-time">
-          <span class="nam">Time</span>
+          <span class="nam">{{ name }}</span>
           <select class="form-control selectmenu" [ngModel]="hoursSelect" (ngModelChange)="getHour($event)">
             <option [ngValue]="item.name" *ngFor="let item of hours">{{ item.name }}</option>
           </select>

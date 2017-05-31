@@ -10,7 +10,19 @@ const routesSchema = new Schema({
   },
   place: String,
   time: String,
-  mapBD: [{ icon: 'string', name: 'string', vicinity: 'string' }]
+  type: String,
+  mapBD: [
+    {
+      icon: 'string',
+      name: 'string',
+      vicinity: 'string'
+    }
+  ],
+  comment: [
+    {
+      content: 'string',
+    }
+  ],
 });
 
 

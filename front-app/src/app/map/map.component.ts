@@ -15,6 +15,7 @@ declare var $:any;
 })
 
 export class MapComponent implements OnInit {
+  helloName: string;
 
   public saveTest: string;
 
@@ -27,6 +28,7 @@ export class MapComponent implements OnInit {
     user: '',
     place: '',
     time: '',
+    type: '',
     mapBD: []
   };
 
@@ -37,6 +39,7 @@ export class MapComponent implements OnInit {
   public iconurl: string;
   public mapCustomStyles : any;
 
+  typeSearch;
   origin;
   timeOrigin;
   location;
@@ -55,6 +58,8 @@ export class MapComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+
+    this.helloName = 'Other World';
 
     this.user = this.session.user;
 
@@ -183,7 +188,10 @@ export class MapComponent implements OnInit {
 
   originSelected(originAll){
     this.origin = originAll;
-    console.log(this.origin);
+  }
+
+  typeSelect(value){
+    this.typeSearch = value;
   }
 
   destinationSelected(destinationAll){
@@ -207,7 +215,8 @@ export class MapComponent implements OnInit {
   setMapRoute(){
     this.placeInfo.user = this.user._id;
     this.placeInfo.place = this.location.vicinity;
-    this.placeInfo.time = this.userTime
+    this.placeInfo.time = this.userTime;
+    this.placeInfo.type = this.typeSearch;
     for(var i = 0; i < this.userPlaces.length;i++){
       this.placeInfo.mapBD.push(
         {

@@ -10,8 +10,13 @@ import { Router } from '@angular/router';
 })
 export class GeoUserComponent implements OnInit {
 
+
+
+
   user: any;
   error: string;
+
+  comment: string;
 
   allRoutes: any;
   allPlaces: any;
@@ -24,24 +29,6 @@ export class GeoUserComponent implements OnInit {
   ngOnInit() {
     this.user = this.session.user;
 
-    // this.session.getMapRoute(this.user._id)
-    //   .subscribe(
-    //     (data) => {
-    //
-    //       this.allRoutes = data
-    //       console.log(data);
-    //       console.log(this.allRoutes);
-    //     },
-    //     (err) => this.error = err
-    //   );
-
-    // this.session.getMapPlace(this.user._id)
-    //   .subscribe(
-    //     (data) => this.allPlaces = data,
-    //     (err) => this.error = err
-    //   );
-
-
     this.session.getMapRoute(this.user._id)
     .subscribe(data => {
       this.allRoutes = data;
@@ -49,16 +36,26 @@ export class GeoUserComponent implements OnInit {
 
     this.session.getMapPlace(this.user._id)
     .subscribe(data => {
-      console.log(data);
       this.allPlaces = data;
     });
 
 
 
-
   }
 
-
+  // private sendComment() {
+  //
+  //   this.comment = this.comment
+  //   // this.allRoutes._id
+  //   console.log(this.allRoutes._id);
+  //   console.log(this.comment);
+  //
+  //   // this.session.postComment(this.comment)
+  //   //   .subscribe(
+  //   //     (user) => this.successCb(user),
+  //   //     (err) => this.errorCb(err)
+  //   //   );
+  // }
 
   errorCb(err) {
     this.error = err;

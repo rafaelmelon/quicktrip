@@ -1,0 +1,20 @@
+<div class="b-form form-route">
+  <div class="panel panel-info">
+    <div class="panel-body">
+      <div class="form-group">
+        <div class="panel-type">
+          <span class="nam">Type</span>
+          <select class="form-control selectmenu" [ngModel]="typeSelect" (ngModelChange)="getType($event)">
+            <option value="art_gallery">Art Gallery</option>
+            <option value="bar">Bar</option>
+            <option value="book_store">Book Store</option>
+            <option value="church">Church</option>
+            <option value="night_club">Night Club</option>
+            <option value="movie_theater">Movie Theather</option>
+            <option value="museum">Museum</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

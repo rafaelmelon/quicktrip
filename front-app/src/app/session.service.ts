@@ -71,4 +71,10 @@ export class SessionService {
       .map(res => res.json())
       .catch(this.handleError);
   }
+  postComment(comment) {
+    console.log(comment);
+    return this.http.post(`${BASEURL}/comment`, comment, this.options)
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
 }

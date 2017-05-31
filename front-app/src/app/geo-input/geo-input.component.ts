@@ -9,7 +9,7 @@ import { SessionService } from '../session.service';
   providers : [ GoogleMapsAPIWrapper ]
 })
 export class GeoInputComponent implements OnInit {
-  @Input() label;
+  @Input() name: string;
   @Output() selectionCompleted = new EventEmitter<any>();
 
   @ViewChild("pickupGPlaces")

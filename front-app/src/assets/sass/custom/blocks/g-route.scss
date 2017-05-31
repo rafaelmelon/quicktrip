@@ -17,7 +17,10 @@
       text-transform: uppercase;
     }
     .panel-body {
-      padding: 0 30px 30px 30px;
+      padding: 30px;
+      .form-group {
+        margin-bottom: 0;
+      }
     }
     .input-map {
       width: 100%;

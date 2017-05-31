@@ -14,6 +14,7 @@ export class GeoRouteComponent implements OnInit {
     private gmapsApi: GoogleMapsAPIWrapper,
   ) {}
 
+  @Input() typeSearch:any;
   @Input() origin:any ;
   @Input() destination:any;
 
@@ -37,10 +38,10 @@ export class GeoRouteComponent implements OnInit {
 
   ngOnInit() {
     this.userTime = (this.destination.minutes - this.origin.minutes) * 60;
-    this.updateDirections(100,this.userTime);
+    this.updateDirections(100,this.typeSearch,this.userTime);
   }
 
-  private updateDirections(maxSize,userTime){
+  private updateDirections(maxSize,type,userTime){
 
     this.originPlaceId = this.origin.location.place_id;
     this.destinationPlaceId = this.destination.location.place_id;
@@ -73,7 +74,7 @@ export class GeoRouteComponent implements OnInit {
       let request = {
         location: latLngA,
         radius: 10000,
-        type: ['museum']
+        type: [type]
       };
 
       var distance = 0;
@@ -162,7 +163,7 @@ export class GeoRouteComponent implements OnInit {
 
             if(that.control === 1) {
 
-              that.updateDirections(i,userTime)
+              that.updateDirections(i,type,userTime)
 
             } else if (that.control === 2) {
 

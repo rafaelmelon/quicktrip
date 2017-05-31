@@ -21,6 +21,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 
 import { RouterModule, Routes } from '@angular/router';
+import { GeoTypeComponent } from './geo-type/geo-type.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -40,7 +41,8 @@ const routes: Routes = [
     GeoInfoComponent,
     GeoUserComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    GeoTypeComponent
   ],
   imports: [
     BrowserModule,
