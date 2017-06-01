@@ -1,0 +1,19 @@
+// main: ../../main.scss
+
+
+.alert-custom {
+  background-color: $primary-3;
+  color: $white;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  border-radius: 0;
+  z-index: 99;
+  border: none;
+  opacity: 0.9;
+  text-align: center;
+  transition: all 0.5s ease-in-out;
+  .close {
+    color: $white;
+  }
+}

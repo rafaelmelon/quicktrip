@@ -4,6 +4,9 @@
 @import "custom/colors.scss";
 @import "custom/custom.scss";
 
+//Vendor
+// @import "vendor/awesome/font-awesome.scss";
+
 // Blocks
 @import "custom/blocks/g-map.scss";
 @import "custom/blocks/g-welcome.scss";
@@ -11,6 +14,7 @@
 @import "custom/blocks/b-form.scss";
 @import "custom/blocks/g-route.scss";
 @import "custom/blocks/b-nav.scss";
+@import "custom/blocks/b-alert.scss";
 
 // Bootstrap
 @import "custom/blocks/c-sidebar.scss";

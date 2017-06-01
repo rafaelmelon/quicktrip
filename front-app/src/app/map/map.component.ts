@@ -15,7 +15,9 @@ declare var $:any;
 })
 
 export class MapComponent implements OnInit {
-  helloName: string;
+
+  alertShow: boolean = false;
+  alertMessage: string;
 
   public saveTest: string;
 
@@ -58,8 +60,6 @@ export class MapComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-
-    this.helloName = 'Other World';
 
     this.user = this.session.user;
 
@@ -212,7 +212,15 @@ export class MapComponent implements OnInit {
     this.userPlaces = route;
   }
 
+  getAlert(alert){
+    // this.userPlaces = alert;
+  }
+
   setMapRoute(){
+
+    this.alertShow = true
+    this.alertMessage = "The route has been SAVED, check on your profile"
+
     this.placeInfo.user = this.user._id;
     this.placeInfo.place = this.location.vicinity;
     this.placeInfo.time = this.userTime;
@@ -226,7 +234,6 @@ export class MapComponent implements OnInit {
         }
       );
     }
-    console.log(this.placeInfo);
     this.session.postMapRoute(this.placeInfo)
     .subscribe(
       (user) => this.successCb(user),

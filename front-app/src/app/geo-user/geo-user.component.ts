@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SessionService } from './../session.service';
 import { Router } from '@angular/router';
 
+declare var $:any;
 
 @Component({
   selector: 'app-geo-user',
@@ -10,16 +11,21 @@ import { Router } from '@angular/router';
 })
 export class GeoUserComponent implements OnInit {
 
-
-
-
   user: any;
   error: string;
 
-  comment: string;
+  alertShow: boolean = false;
+  alertMessage: string;
+
+  inputNote = {
+    id: '',
+    note: ''
+  };
+  //noteValue:string;
 
   allRoutes: any;
   allPlaces: any;
+
 
   constructor(
     private router: Router,
@@ -27,6 +33,7 @@ export class GeoUserComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.user = this.session.user;
 
     this.session.getMapRoute(this.user._id)
@@ -39,23 +46,47 @@ export class GeoUserComponent implements OnInit {
       this.allPlaces = data;
     });
 
-
-
   }
 
-  // private sendComment() {
-  //
-  //   this.comment = this.comment
-  //   // this.allRoutes._id
-  //   console.log(this.allRoutes._id);
-  //   console.log(this.comment);
-  //
-  //   // this.session.postComment(this.comment)
-  //   //   .subscribe(
-  //   //     (user) => this.successCb(user),
-  //   //     (err) => this.errorCb(err)
-  //   //   );
-  // }
+  alertChange(){
+    this.alertShow = false
+  }
+
+  private eventDelete(id) {
+
+    this.alertShow = true
+    this.alertMessage = "The route has been DELETED"
+
+    this.session.deleteMapRoute(id)
+      .subscribe(
+        (user) => this.successCb(user),
+        (err) => this.errorCb(err)
+      );
+
+    this.session.getMapRoute(this.user._id)
+    .subscribe(data => {
+      this.allRoutes = data;
+    });
+  }
+
+  private sendNote(id,note) {
+
+    this.alertShow = true
+    this.alertMessage = "Your note has been saved, check your saved notes on the ROUTES tab"
+    //this.noteValue = '';
+
+    const noteInfo = {
+      id: id,
+      note: note
+    }
+
+    this.session.postNotes(noteInfo)
+      .subscribe(
+        (user) => this.successCb(user),
+        (err) => this.errorCb(err)
+      );
+
+  }
 
   errorCb(err) {
     this.error = err;
@@ -65,6 +96,7 @@ export class GeoUserComponent implements OnInit {
   successCb(user) {
     this.user = user;
     this.error = null;
+    // this.router.navigate(['/geomap'])
   }
 
 }

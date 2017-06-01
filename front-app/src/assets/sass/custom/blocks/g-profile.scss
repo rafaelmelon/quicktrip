@@ -5,7 +5,7 @@
   height: 100%;
   .b-panel-routes {
     width: 100%;
-    padding: 20px 0;
+    padding: 20px 0 0 0;
     border-bottom: 1px solid $primary-1-1;
     float: left;
     .tag {
@@ -29,12 +29,15 @@
       font-size: 13px;
       font-style: italic;
       line-height: 20px;
+      padding-bottom: 20px;
     }
     .comments-textarea {
       color: white;
       font-size: 13px;
+      padding-bottom: 20px;
     }
     textarea {
+      min-height: 150px;
       margin-bottom: 20px;
     }
   }

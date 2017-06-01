@@ -26,13 +26,24 @@ mapRoutes.post('/route',  (req, res, next) => {
   });
 });
 
+mapRoutes.post('/route/delete/:id', (req, res, next) => {
+  const id = req.params.id;
+
+  Route.findByIdAndRemove(id, (err, product) => {
+    if (err){ return next(err); }
+    return res.json({
+      message: 'Route deleted'
+    });
+  });
+
+});
+
 mapRoutes.get('/route/:id', (req, res, next) => {
   Route.find({user : req.params.id}).populate('user').exec((error, map)=>{
     if (error) { next(error); }
     res.json(map);
   });
 });
-
 
 
 mapRoutes.post('/place',  (req, res, next) => {
@@ -50,12 +61,19 @@ mapRoutes.post('/place',  (req, res, next) => {
 });
 
 mapRoutes.get('/place/:id', (req, res, next) => {
-
   Place.find({user : req.params.id}).populate('user').exec((error, place)=>{
     if (error) { next(error); }
     res.json(place);
   });
 });
 
+
+mapRoutes.post('/notes',(req, res, next)=>{
+
+  Route.update({ _id: req.body.id }, { $push: { comment: req.body.note } }).exec((error, route)=>{
+    if (error) { next(error); }
+    res.status(200).json(route);
+  });
+});
 
 module.exports = mapRoutes;

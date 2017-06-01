@@ -1,9 +1,13 @@
+<div class="alert alert-warning alert-dismissible alert-custom" role="alert" *ngIf="alertShow">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" ><span (click)='alertChange()'>&times;</span></button>
+  <strong>OK! </strong> <span [innerHTML]=alertMessage></span>
+</div>
 <app-navbar></app-navbar>
 <div class="g-profile">
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#routes" aria-controls="routes" role="tab" data-toggle="tab">Routes</a></li>
     <li role="presentation"><a href="#places" aria-controls="places" role="tab" data-toggle="tab">Places</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+    <li role="presentation"><a href="#notes" aria-controls="notes" role="tab" data-toggle="tab">Notes</a></li>
   </ul>
   <div class="tab-content">
     <div class="tab-content">
@@ -16,8 +20,8 @@
               </div>
               <div class="time">Type: {{ items.type }}</div>
               <div class="time">Route total time: {{ items.time }}</div>
-              <div class="comments">
-                "Phasellus gravida laoreet tellus a vestibulum. Pellentesque sed posuere ex. Nam dictum auctor leo vitae rutrum. Quisque eleifend lorem gravida, tincidunt mauris mollis, tristique ex. Pellentesque libero ex, pharetra quis sagittis nec, tincidunt sit amet justo. Curabitur ac quam sem. Donec tincidunt a est ut accumsan."
+              <div class="comments" *ngFor="let notes of items['comment']">
+                "{{ notes }}"
               </div>
             </div>
             <div class="col-md-10">
@@ -36,6 +40,15 @@
               </div>
             </div>
           </div>
+          <nav class="d-nav navbar">
+            <div class="container-fluid">
+              <div class="navbar-header navbar-right n-r">
+                <a class="navbar-brand" (click)="eventDelete(items._id)" [routerLink]="['/geouser']">Delete</a>
+                <a class="navbar-brand" href="#notes" role="tab" data-toggle="tab">Add Note</a>
+                <a class="navbar-brand" href="#">Share</a>
+              </div>
+            </div>
+          </nav>
         </div>
       </div>
       <div role="tabpanel" class="tab-pane" id="places">
@@ -57,7 +70,7 @@
           </div>
         </div>
       </div>
-      <div role="tabpanel" class="tab-pane" id="profile">
+      <div role="tabpanel" class="tab-pane" id="notes">
         <div class="col-md-12 text-center">
           <h3 class="h3">ROUTE NOTES</h3>
         </div>
@@ -72,8 +85,8 @@
               <div class="comments-textarea">Write a note or experience on the route and remember it forever</div>
             </div>
             <div class="col-md-10">
-              <textarea class="form-control" rows="3" (ngModel)="comment"></textarea>
-              <a href="#" class="btn btn-success btn-lg btn-custom-1 btn-custom-color-1" (click)="sendComment()">Send note!</a>
+              <textarea class="form-control" rows="3" #inputNote></textarea>
+              <a class="btn btn-success btn-lg btn-custom-1 btn-custom-color-1" (click)='sendNote(items._id,inputNote.value)'>Send note!</a>
             </div>
           </div>
         </div>

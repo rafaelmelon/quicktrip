@@ -18,11 +18,7 @@ const routesSchema = new Schema({
       vicinity: 'string'
     }
   ],
-  comment: [
-    {
-      content: 'string',
-    }
-  ],
+  comment: [String]
 });
 
 

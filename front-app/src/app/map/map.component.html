@@ -1,3 +1,7 @@
+<div class="alert alert-warning alert-dismissible alert-custom" role="alert" *ngIf="alertShow">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" ><span (click)='alertChange()'>&times;</span></button>
+  <strong>OK! </strong><span [innerHTML]=alertMessage></span>
+</div>
 <app-navbar></app-navbar>
 <div class="g-route" *ngIf="!dataComplete">
   <div class="container">
@@ -41,6 +45,6 @@
         </div>
       </nav>
     </div>
-    <app-geo-info *ngIf="location" [origin]="origin" [destination]="destination" [userPlaces]="userPlaces" [userPlacesRoute]="userPlacesRoute"></app-geo-info>
+    <app-geo-info *ngIf="location" [origin]="origin" [destination]="destination" [userPlaces]="userPlaces" [userPlacesRoute]="userPlacesRoute" (alertNotification)="getAlert($event)"></app-geo-info>
   </div>
 </div>

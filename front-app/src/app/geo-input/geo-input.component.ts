@@ -116,7 +116,6 @@ export class GeoInputComponent implements OnInit {
 
   checkInputReady(){
     if(this.minuteInputDone && this.hourInputDone && this.selectedPlace){
-      console.log("Send input info")
       this.selectionCompleted.emit({
         hours: this.hoursSelect * 60,
         minutes: this.minutesSelect + this.hoursSelect * 60,

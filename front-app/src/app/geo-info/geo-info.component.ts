@@ -1,4 +1,4 @@
-import { Component, Input, Output, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { SessionService } from './../session.service';
 
 @Component({
@@ -8,11 +8,16 @@ import { SessionService } from './../session.service';
 })
 export class GeoInfoComponent implements OnInit {
 
+  alertShow: boolean = false;
+  alertMessage: string;
+
   @Input() userPlaces:any ;
   @Input() userPlacesRoute:any ;
 
   @Input() origin:any ;
   @Input() destination:any;
+
+  @Output() alertNotification = new EventEmitter<any>();
 
   user: any;
   error: string;
@@ -47,8 +52,12 @@ export class GeoInfoComponent implements OnInit {
       (err) => this.errorCb(err)
     );
 
-    this.alert = "Place saved!";
+    this.alertNotification.emit({
+      alertShow : true,
+      alertMessage : "The place has been SAVED, check on your profile"
+    })
   }
+
 
   errorCb(err) {
     this.error = err;

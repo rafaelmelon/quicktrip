@@ -55,8 +55,15 @@ export class SessionService {
       .map(res => res.json())
       .catch(this.handleError);
   }
+
   postMapRoute(map) {
     return this.http.post(`${BASEURL}/route`, map, this.options)
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
+
+  deleteMapRoute(id) {
+    return this.http.post(`${BASEURL}/route/delete/${id}`, this.options)
       .map(res => res.json())
       .catch(this.handleError);
   }
@@ -71,9 +78,8 @@ export class SessionService {
       .map(res => res.json())
       .catch(this.handleError);
   }
-  postComment(comment) {
-    console.log(comment);
-    return this.http.post(`${BASEURL}/comment`, comment, this.options)
+  postNotes(noteInfo) {
+    return this.http.post(`${BASEURL}/notes/`,noteInfo, this.options)
       .map(res => res.json())
       .catch(this.handleError);
   }
