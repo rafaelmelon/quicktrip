@@ -43,7 +43,7 @@
           <nav class="d-nav navbar">
             <div class="container-fluid">
               <div class="navbar-header navbar-right n-r">
-                <a class="navbar-brand" (click)="eventDelete(items._id)" [routerLink]="['/geouser']">Delete</a>
+                <a class="navbar-brand" (click)="deleteRoute(items._id)" [routerLink]="['/geouser']">Delete</a>
                 <a class="navbar-brand" href="#notes" role="tab" data-toggle="tab">Add Note</a>
                 <a class="navbar-brand" href="#">Share</a>
               </div>
@@ -64,6 +64,7 @@
                 <span class="card__subtitle">{{ item.location }}</span>
                 <div class="card__action-bar">
                   <a class="card__button" href="https://google.com/maps/search/{{ item.name }}" target="'_blank">LEARN MORE</a>
+                  <a class="card__button" (click)="deletePlace(item._id)">REMOVE</a>
                 </div>
               </div>
             </div>

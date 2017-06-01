@@ -52,7 +52,7 @@ export class GeoUserComponent implements OnInit {
     this.alertShow = false
   }
 
-  private eventDelete(id) {
+  private deleteRoute(id) {
 
     this.alertShow = true
     this.alertMessage = "The route has been DELETED"
@@ -62,12 +62,19 @@ export class GeoUserComponent implements OnInit {
         (user) => this.successCb(user),
         (err) => this.errorCb(err)
       );
-
-    this.session.getMapRoute(this.user._id)
-    .subscribe(data => {
-      this.allRoutes = data;
-    });
   }
+
+  // private deletePlace(id){
+  //
+  //   this.alertShow = true
+  //   this.alertMessage = "The place has been DELETED"
+  //
+  //   this.session.deleteMapPlace(id)
+  //     .subscribe(
+  //       (user) => this.successCb(user),
+  //       (err) => this.errorCb(err)
+  //     );
+  // }
 
   private sendNote(id,note) {
 
