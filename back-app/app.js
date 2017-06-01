@@ -14,9 +14,13 @@ const passport   = require('passport');
 const cors = require('cors');
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/quicktravel');
+//mongoose.connect('mongodb://localhost/quicktravel');
+require('dotenv').load();
+mongoose.connect(process.env.MONGODB_URI);
 
 const passportSetup = require('./config/passport');
+
+
 
 
 const app = express();

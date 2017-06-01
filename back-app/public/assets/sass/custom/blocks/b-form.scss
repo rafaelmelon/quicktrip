@@ -1,0 +1,172 @@
+// main: ../../main.scss
+
+/* all */
+::-webkit-input-placeholder { color:$primary-1-1; }
+::-moz-placeholder { color:$primary-1-1; } /* firefox 19+ */
+:-ms-input-placeholder { color:$primary-1-1; } /* ie */
+input:-moz-placeholder { color:$primary-1-1; }
+
+/* individual: webkit */
+.input-style::-webkit-input-placeholder { color: $primary-1-1; }
+/* individual: mozilla */
+.input-style::-moz-placeholder { color: $primary-1-1; }
+
+.b-form {
+  .form-group {
+    margin-bottom: 30px;
+  }
+  .panel-info {
+    border-color: $primary-1;
+    background-color: $primary-1;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    margin-top: 40px;
+    input[type="text"],
+    input[type="password"] {
+      font-size: 15px;
+      color: $white;
+      padding: 0;
+      text-transform: uppercase;
+      border: none;
+      background: none;
+      border-radius: 0;
+      text-align: center;
+      box-shadow: none;
+      letter-spacing: 0.1em;
+      padding-bottom: 15px;
+      border-bottom: solid 1px $primary-1-1;
+      transition: border 0.3s;
+      &.input-lowercase {
+        text-transform: inherit;
+      }
+    }
+    .panel-time, .panel-type {
+      text-align: center;
+      margin-bottom: 30px;
+      select {
+        border-radius: 0;
+        box-shadow: none;
+        display: inline-block;
+        width: 50px;
+        font-size: 16px;
+        text-align: center;
+        padding: 0 16px;
+      }
+      .nam {
+        display: inline-block;
+        width: 100%;
+        font-size: 15px;
+        color: $primary-1-1;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        padding-bottom: 15px;
+      }
+      .sep {
+        display: inline-block;
+        height: 34px;
+        padding: 0px 5px;
+        font-size: 22px;
+      }
+    }
+    .panel-type {
+      select {
+        width: 250px;
+      }
+    }
+    input[type="text"]:focus,
+    input[type="text"].focus,
+    input[type="password"]:focus,
+    input[type="password"].focus {
+      color: $white;
+      border-bottom: solid 1px $white;
+    }
+
+    .panel-body {
+      padding: 40px;
+      .avatar {
+        background-color: $white;
+        height: 100px;
+        width: 100px;
+        margin: 0 auto 15px auto;
+        overflow: hidden;
+        position: relative;
+        border-radius: 50%;
+        i {
+          font-size: 40px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+      .text-signup {
+        p {
+          color: $primary-1-1;
+        }
+        a {
+          color: $white;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          text-decoration: underline;
+          margin: 0;
+
+        }
+      }
+      .error {
+        margin: 0 0 10px;
+        color: $black;
+        text-transform: uppercase;
+        text-align: center;
+      }
+    }
+  }
+}
+
+
+// .pac-container {
+//   border: 0;
+//
+// }
+// .pac-icon {
+//
+// }
+// .pac-item {
+//   color: $grey-3;
+//   padding: 15px 5px;
+//   cursor: pointer;
+// }
+// .pac-item:hover {
+//   color: $grey-3;
+// }
+// .pac-item-selected {
+//
+// }
+// .pac-item-query {
+//   color: $black;
+//   text-transform: uppercase;
+// }
+// .pac-matched {
+//   color: $black;
+// }
+
+
+
+
+
+
+
+
+.selectmenu {
+	-webkit-appearance: none;  /*Removes default chrome and safari style*/
+	-moz-appearance: none; /* Removes Default Firefox style*/
+	text-indent: 0.01px; /* Removes default arrow from firefox*/
+	text-overflow: "";  /*Removes default arrow from firefox*/ /*My custom style for fonts*/
+  border:0 !important;
+}
+.hideoption {
+  display:none;
+  visibility:hidden;
+  height:0;
+  font-size:0;
+}

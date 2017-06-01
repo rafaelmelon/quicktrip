@@ -16,7 +16,7 @@ export class GeoTypeComponent implements OnInit {
   ngOnInit() {
   }
 
-  private getType(type){
+  public getType(type){
     this.typeSelect = type;
     this.selectionCompletedType.emit(this.typeSelect)
   }

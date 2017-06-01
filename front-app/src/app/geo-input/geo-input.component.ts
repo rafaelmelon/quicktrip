@@ -39,7 +39,7 @@ export class GeoInputComponent implements OnInit {
   constructor(
     public mapsAPILoader: MapsAPILoader,
     public session: SessionService,
-    private ngZone: NgZone
+    public ngZone: NgZone
   ) { }
 
   ngOnInit() {
@@ -56,7 +56,7 @@ export class GeoInputComponent implements OnInit {
     });
   }
 
-  private setupPlaceChangedListener(autocomplete: any, mode: any ) {
+  public setupPlaceChangedListener(autocomplete: any, mode: any ) {
     const instance = this;
     autocomplete.addListener("place_changed", () =>   {
       this.ngZone.run( () => {
@@ -87,7 +87,7 @@ export class GeoInputComponent implements OnInit {
     });
   }
 
-  private loadTimeSelect(){
+  public loadTimeSelect(){
     for(var i = 1;i<24;i++){
       this.hours.push({name:i});
     }
@@ -103,12 +103,12 @@ export class GeoInputComponent implements OnInit {
     this.minutesSelect = this.minutes[1].name
   }
 
-  private getHour(hour){
+  public getHour(hour){
     this.hoursSelect = hour;
     this.hourInputDone = true;
     // this.checkInputReady()
   }
-  private getMinute(minute){
+  public getMinute(minute){
     this.minutesSelect = minute;
     this.minuteInputDone = true;
     // this.checkInputReady()

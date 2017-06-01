@@ -1,5 +1,5 @@
 {
-  "name": "angular-auth",
+  "name": "quicktrip",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -12,6 +12,7 @@
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.3",
     "debug": "~2.6.3",
+    "dotenv": "^4.0.0",
     "ejs": "~2.5.6",
     "express": "~4.15.2",
     "express-session": "^1.15.3",

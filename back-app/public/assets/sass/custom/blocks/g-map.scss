@@ -1,0 +1,343 @@
+// main: ../../main.scss
+
+.g-map {
+  background-color: $primary-1;
+  height: 100%;
+  .maps {
+    width: 100%;
+    overflow: hidden;
+    height: 300px;
+    img {
+      width: 100%;
+    }
+  }
+  .nav-results {
+    background-color: $white;
+    border-radius: 0;
+    .navbar-header {
+      width: 100%;
+      @media (max-width: 768px) {
+        width: inherit;
+      }
+      span.navbar-brand {
+        font-size: 14px;
+        position: relative;
+        padding: 15px 25px;
+        color: $grey-3;
+        span {
+          color: $black;
+        }
+        &:after {
+          content: '';
+          background-color: $grey-2;
+          height: 20px;
+          width: 1px;
+          position: absolute;
+          right: 5px;
+        }
+        @media (max-width: 992px) {
+          display: inline-block;
+          width: 100%;
+          padding: 15px 15px 0 15px;
+        }
+        @media (max-width: 768px) {
+          &:after {
+            display: none;
+          }
+        }
+      }
+      .p-r {
+        float: right;
+        @media (max-width: 768px) {
+          float: inherit;
+        }
+      }
+      a.navbar-brand {
+        font-size: 14px;
+        color: $primary-3;
+        cursor: pointer;
+        @media (max-width: 768px) {
+          color: $white;
+          text-align: center;
+          position: relative;
+          width: 50%;
+          color: &white;
+          background-color: $primary-3;
+          float: left;
+          &:last-child:before  {
+            position: absolute;
+            content: '';
+            background-color: $white;
+            height: 50px;
+            width: 1px;
+            position: absolute;
+            left: 0;
+            top: 0px;
+            z-index: 2;
+          }
+        }
+        &:after {
+          display: none;
+        }
+        &:focus {
+          color: $grey-3;
+          text-decoration: none;
+        }
+        &:hover {
+          color: $grey-3;
+          text-decoration: none;
+        }
+        &:active {
+          color: $grey-3;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  .windowPoi {
+    font-family: $font-text;
+    color: $black;
+    img {
+    float: left;
+    }
+    .windowPoi-info {
+      float: left;
+      width: 250px;
+      padding: 0 10px;
+      span {
+        width: 100%;
+        display: inline-block;
+        margin: 0 0 7px 0;
+        strong {
+          font-size: 15px;
+        }
+      }
+      .h2 {
+        width: 100%;
+        display: inline-block;
+        margin: 0;
+        font-size: 16px;
+        margin: 0 0 7px 0;
+      }
+      .h3 {
+        display: inline-block;
+        margin: 0;
+        font-size: 15px;
+        background-color: $primary-1;
+        padding: 2px 5px;
+        margin: 0 0 7px 0;
+      }
+      p {
+        width: 100%;
+        display: inline-block;
+        margin: 0;
+      }
+      a {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+.card {
+  will-change: transform;
+  margin: 0 0 16px 0;
+  position: relative;
+  overflow: hidden;
+  background-color: $white;
+  height: 35%;
+  width: 100%;
+  -webkit-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+  &:hover {
+    cursor: pointer;
+  }
+  .card__num {
+    width: 30px;
+    height: 30px;
+    color: $white;
+    background-color: $black;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    text-align: center;
+    font-size: 20px;
+  }
+
+  i.card__mark {
+    color: $primary-1;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    z-index: 2;
+    font-size: 30px;
+    text-shadow: 0 2px 2px rgba(0,0,0,0.3);
+  }
+
+  .card__image {
+    position: absolute;
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repat;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: block;
+    opacity: 0;
+    -webkit-transition: all 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: all 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    img {
+      height: 100%;
+      left: -50%;
+      position: absolute;
+    }
+  }
+  .card__image:after {
+    content: "";
+    display: block;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.1);
+    top: 0;
+    left: 0;
+    right: 0;
+    -webkit-transition: all 500ms;
+    transition: all 500ms;
+    bottom: 0;
+  }
+  .card__title {
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    font-size: 20px;
+    color: $white;
+    margin: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: 0 15px;
+    font-weight: 400;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-transition: all 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: all 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  .card__subtitle {
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    font-size: 14px;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: $black;
+    left: 100px;
+    right: 0;
+    top: 45px;
+    position: absolute;
+    padding: 0 16px;
+    opacity: 0;
+    -webkit-transition: all 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: all 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  .card__action-bar {
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    position: absolute;
+    bottom: 0;
+    top: auto;
+    left: 0;
+    right: 0;
+    padding: 0 8px;
+    border-top: 1px solid $grey-2;
+    boz-sizing: border-box;
+    height: 50px;
+    -webkit-transition: left 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: left 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    .card__button {
+      outline: none;
+      position: relative;
+      display: inline-block;
+      line-height: 50px;
+      padding: 0 15px;
+      color: $primary-3;
+      &:focus {
+        color: $grey-3;
+        text-decoration: none;
+      }
+      &:hover {
+        color: $grey-3;
+        text-decoration: none;
+      }
+      &:active {
+        color: $grey-3;
+        text-decoration: none;
+      }
+    }
+  }
+  &.card--small {
+    // box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3), 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+    height: 136px;
+    min-height: 136px;
+    .card__image {
+      border-radius: 1px 0 0 1px;
+      left: 0;
+      top: 0;
+      width: 100px;
+      opacity: 1;
+      max-height: 136px;
+      &:after {
+        opacity: 0;
+      }
+    }
+    .card__title {
+      color: $black;
+      left: 100px;
+      top: 8px;
+    }
+    .card__subtitle {
+      opacity: 1;
+      left: 100px;
+    }
+    .card__text {
+      top: 30px;
+      opacity: 0;
+    }
+    .card__action-bar {
+      left: 100px;
+    }
+    &.card--place {
+      .card__title {
+        font-size: 15px;
+        left: 30px;
+      }
+      .card__subtitle {
+        font-size: 13px;
+        left: 30px;
+      }
+      .card__action-bar {
+        left: 0;
+        text-align: center;
+      }
+    }
+  }
+
+}
+
+
+.gmnoprint {
+  img {}
+}
