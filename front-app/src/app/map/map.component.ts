@@ -186,6 +186,10 @@ export class MapComponent implements OnInit {
     // Write your Google Map Custom Style Code Here.
   }
 
+  alertChange(){
+    this.alertShow = false
+  }
+
   originSelected(originAll){
     this.origin = originAll;
   }
@@ -213,7 +217,8 @@ export class MapComponent implements OnInit {
   }
 
   getAlert(alert){
-    // this.userPlaces = alert;
+    this.alertShow = alert.alertShow;
+    this.alertMessage = alert.alertMessage;
   }
 
   setMapRoute(){
