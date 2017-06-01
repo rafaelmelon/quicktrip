@@ -80,15 +80,15 @@
           display: none;
         }
         &:focus {
-          color: $grey-3;
+          color: $primary-1;
           text-decoration: none;
         }
         &:hover {
-          color: $grey-3;
+          color: $primary-1;
           text-decoration: none;
         }
         &:active {
-          color: $grey-3;
+          color: $primary-1;
           text-decoration: none;
         }
       }
@@ -275,15 +275,15 @@
       padding: 0 15px;
       color: $primary-3;
       &:focus {
-        color: $grey-3;
+        color: $primary-1;
         text-decoration: none;
       }
       &:hover {
-        color: $grey-3;
+        color: $primary-1;
         text-decoration: none;
       }
       &:active {
-        color: $grey-3;
+        color: $primary-1;
         text-decoration: none;
       }
     }

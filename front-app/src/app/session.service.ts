@@ -70,18 +70,26 @@ export class SessionService {
       .catch(this.handleError);
   }
 
+  postNotes(noteInfo) {
+    return this.http.post(`${BASEURL}/notes/`,noteInfo, this.options)
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
+
   getMapPlace(id) {
     return this.http.get(`${BASEURL}/place/${id}`, this.options)
       .map(res => res.json())
       .catch(this.handleError);
   }
+
   postMapPlace(place) {
     return this.http.post(`${BASEURL}/place`, place, this.options)
       .map(res => res.json())
       .catch(this.handleError);
   }
-  postNotes(noteInfo) {
-    return this.http.post(`${BASEURL}/notes/`,noteInfo, this.options)
+
+  deleteMapPlace(id) {
+    return this.http.post(`${BASEURL}/place/delete/${id}`, this.options)
       .map(res => res.json())
       .catch(this.handleError);
   }

@@ -64,17 +64,17 @@ export class GeoUserComponent implements OnInit {
       );
   }
 
-  // private deletePlace(id){
-  //
-  //   this.alertShow = true
-  //   this.alertMessage = "The place has been DELETED"
-  //
-  //   this.session.deleteMapPlace(id)
-  //     .subscribe(
-  //       (user) => this.successCb(user),
-  //       (err) => this.errorCb(err)
-  //     );
-  // }
+  private deletePlace(id){
+
+    this.alertShow = true
+    this.alertMessage = "The place has been DELETED"
+  
+    this.session.deleteMapPlace(id)
+      .subscribe(
+        (user) => this.successCb(user),
+        (err) => this.errorCb(err)
+      );
+  }
 
   private sendNote(id,note) {
 

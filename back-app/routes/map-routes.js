@@ -19,7 +19,6 @@ mapRoutes.post('/route',  (req, res, next) => {
     type,
     mapBD
   });
-
   routeOb.save((error, objRoute) => {
     if (error) {next(error);}
     res.status(200).json(objRoute);
@@ -28,14 +27,12 @@ mapRoutes.post('/route',  (req, res, next) => {
 
 mapRoutes.post('/route/delete/:id', (req, res, next) => {
   const id = req.params.id;
-
   Route.findByIdAndRemove(id, (err, product) => {
     if (err){ return next(err); }
     return res.json({
       message: 'Route deleted'
     });
   });
-
 });
 
 mapRoutes.get('/route/:id', (req, res, next) => {
@@ -44,7 +41,6 @@ mapRoutes.get('/route/:id', (req, res, next) => {
     res.json(map);
   });
 });
-
 
 mapRoutes.post('/place',  (req, res, next) => {
   const { user, name, location, icon } = req.body;
@@ -60,6 +56,16 @@ mapRoutes.post('/place',  (req, res, next) => {
   });
 });
 
+mapRoutes.post('/place/delete/:id', (req, res, next) => {
+  const id = req.params.id;
+  Place.findByIdAndRemove(id, (err, product) => {
+    if (err){ return next(err); }
+    return res.json({
+      message: 'Route deleted'
+    });
+  });
+});
+
 mapRoutes.get('/place/:id', (req, res, next) => {
   Place.find({user : req.params.id}).populate('user').exec((error, place)=>{
     if (error) { next(error); }
@@ -67,9 +73,7 @@ mapRoutes.get('/place/:id', (req, res, next) => {
   });
 });
 
-
 mapRoutes.post('/notes',(req, res, next)=>{
-
   Route.update({ _id: req.body.id }, { $push: { comment: req.body.note } }).exec((error, route)=>{
     if (error) { next(error); }
     res.status(200).json(route);
