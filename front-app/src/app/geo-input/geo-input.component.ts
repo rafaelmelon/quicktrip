@@ -50,7 +50,7 @@ export class GeoInputComponent implements OnInit {
 
     this.mapsAPILoader.load().then(() => {
       let autocompleteInput = new google.maps.places.Autocomplete(this.pickupElementRef.nativeElement, {
-        types: ["address"]
+        types: ["geocode"]
       });
       this.setupPlaceChangedListener(autocompleteInput, 'ORG');
     });

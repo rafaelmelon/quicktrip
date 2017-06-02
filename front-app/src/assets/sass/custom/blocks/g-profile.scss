@@ -40,6 +40,12 @@
       min-height: 150px;
       margin-bottom: 20px;
     }
+    .btn-success {
+      margin-bottom: 20px
+    }
+    @media (max-width: 768px) {
+      text-align: center;
+    }
   }
   .nav-tabs {
     background-color: $white;

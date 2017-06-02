@@ -21,6 +21,14 @@
           }
         }
       }
+      &.brand-link {
+        &:hover {
+          color: $white;
+        }
+        strong {
+          text-transform: uppercase;
+        }
+      }
     }
     @media (max-width: 768px) {
       &.n-l, &.n-r {

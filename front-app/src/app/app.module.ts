@@ -50,7 +50,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpModule,
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyBRva2OV726n_b6UmtgS6AiuIXrSx-YFTo",
+      apiKey: "AIzaSyBYmaR7bgtXcag_YAMi__8xuJXMGrEmm8A",
       libraries: ["places"]
     }),
     RouterModule.forRoot(routes)

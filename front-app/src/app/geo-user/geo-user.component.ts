@@ -21,78 +21,85 @@ export class GeoUserComponent implements OnInit {
     id: '',
     note: ''
   };
-  //noteValue:string;
 
   allRoutes: any;
   allPlaces: any;
 
-
   constructor(
-    private router: Router,
-    private session: SessionService
-  ) { }
+    public router: Router,
+    public session: SessionService
+  ) {}
 
   ngOnInit() {
-
     this.user = this.session.user;
 
-    this.session.getMapRoute(this.user._id)
-    .subscribe(data => {
-      this.allRoutes = data;
-    });
-
-    this.session.getMapPlace(this.user._id)
-    .subscribe(data => {
-      this.allPlaces = data;
-    });
-
+    if(this.allRoutes == null){
+      this.syncDataBase();
+    }
   }
 
   alertChange(){
     this.alertShow = false
   }
 
-  private deleteRoute(id) {
+  public syncDataBase() {
+    this.session.getMapRoute(this.user._id)
+    .subscribe(data => {
+      this.allRoutes = data;
+    });
+    this.session.getMapPlace(this.user._id)
+    .subscribe(data => {
+      this.allPlaces = data;
+    });
+  }
 
-    this.alertShow = true
-    this.alertMessage = "The route has been DELETED"
-
+  public deleteRoute(id) {
     this.session.deleteMapRoute(id)
-      .subscribe(
-        (user) => this.successCb(user),
-        (err) => this.errorCb(err)
-      );
+    .subscribe(res => {
+      this.session.getMapRoute(this.user._id)
+      .subscribe(data => {
+        this.allRoutes = data;
+        this.alertShow = true
+        this.alertMessage = "The route has been DELETED"
+        setTimeout(function(){
+          this.alertShow = false
+        }, 3000);
+      });
+    });
   }
 
-  private deletePlace(id){
-
-    this.alertShow = true
-    this.alertMessage = "The place has been DELETED"
-  
+  public deletePlace(id){
     this.session.deleteMapPlace(id)
-      .subscribe(
-        (user) => this.successCb(user),
-        (err) => this.errorCb(err)
-      );
+    .subscribe(res => {
+      this.session.getMapPlace(this.user._id)
+      .subscribe(data => {
+        this.allPlaces = data;
+        this.alertShow = true
+        this.alertMessage = "The place has been DELETED"
+        setTimeout(function(){
+          this.alertShow = false
+        }, 3000);
+      });
+    });
   }
 
-  private sendNote(id,note) {
-
-    this.alertShow = true
-    this.alertMessage = "Your note has been saved, check your saved notes on the ROUTES tab"
-    //this.noteValue = '';
-
+  public sendNote(id,note) {
     const noteInfo = {
       id: id,
       note: note
     }
-
     this.session.postNotes(noteInfo)
-      .subscribe(
-        (user) => this.successCb(user),
-        (err) => this.errorCb(err)
-      );
-
+    .subscribe(res => {
+      this.session.getMapRoute(this.user._id)
+      .subscribe(data => {
+        this.allRoutes = data;
+        this.alertShow = true
+        this.alertMessage = "Your note has been saved, check your saved notes on the ROUTES tab"
+        setTimeout(function(){
+          this.alertShow = false
+        }, 3000);
+      });
+    });
   }
 
   errorCb(err) {
@@ -103,7 +110,6 @@ export class GeoUserComponent implements OnInit {
   successCb(user) {
     this.user = user;
     this.error = null;
-    // this.router.navigate(['/geomap'])
   }
 
 }
